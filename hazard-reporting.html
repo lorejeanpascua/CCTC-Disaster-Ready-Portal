@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Hazard Reporting | CCTC Disaster Ready</title>
+
+    <link rel="stylesheet" href="styles.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet"
+    >
+
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    >
+
+</head>
+
+
+<body>
+
+
+    <!-- =========================
+         NAVIGATION BAR
+    ========================== -->
+
+    <nav class="navbar">
+
+        <div class="logo">
+
+            <div class="logo-icon">
+                <i class="fa-solid fa-shield-halved"></i>
+            </div>
+
+            <span>CCTC Disaster Ready</span>
+
+        </div>
+
+
+        <div class="nav-links">
+
+            <a href="index.html">Home</a>
+
+            <a href="#">About</a>
+
+            <a href="#">Content</a>
+
+            <a href="#">Others</a>
+
+        </div>
+
+
+        <button class="profile-button">
+
+            <i class="fa-solid fa-user"></i>
+
+        </button>
+
+    </nav>
+
+
+    <!-- =========================
+         HERO
+    ========================== -->
+
+    <section class="earthquake-hero hazard-page">
+
+        <div class="breadcrumb">
+
+            <a href="index.html">Home</a>
+
+            <i class="fa-solid fa-chevron-right"></i>
+
+            <span>Hazard Reporting</span>
+
+        </div>
+
+
+        <div class="earthquake-hero-content">
+
+            <div class="disaster-label">
+
+                <i class="fa-solid fa-triangle-exclamation"></i>
+
+                HAZARD REPORTING
+
+            </div>
+
+
+            <h1>
+
+                See A Hazard.<br>
+
+                <span>Report It Quickly.</span>
+
+            </h1>
+
+
+            <p>
+
+                Help keep the CCTC community safe by reporting
+                hazards, unsafe conditions, or damaged facilities
+                that may cause accidents or emergencies.
+
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         REPORT FORM
+    ========================== -->
+
+    <section class="dch-section hazard-section">
+
+        <div class="section-title">
+
+            <span class="section-tag">
+                REPORT A HAZARD
+            </span>
+
+            <h2>
+                Tell Us What You Found
+            </h2>
+
+            <p>
+                Provide enough information so the reported
+                hazard can be identified and addressed.
+            </p>
+
+        </div>
+
+
+        <div class="hazard-form-card">
+
+
+            <!-- HAZARD TYPE -->
+
+            <div class="hazard-field">
+
+                <label for="hazardType">
+                    Hazard Type
+                </label>
+
+                <select id="hazardType">
+
+                    <option value="">
+                        Select hazard type
+                    </option>
+
+                    <option value="Blocked Exit">
+                        Blocked Exit
+                    </option>
+
+                    <option value="Electrical Hazard">
+                        Electrical Hazard
+                    </option>
+
+                    <option value="Slippery Floor">
+                        Slippery Floor
+                    </option>
+
+                    <option value="Flooding">
+                        Flooding
+                    </option>
+
+                    <option value="Damaged Facility">
+                        Damaged Facility
+                    </option>
+
+                    <option value="Fire Hazard">
+                        Fire Hazard
+                    </option>
+
+                    <option value="Structural Damage">
+                        Structural Damage
+                    </option>
+
+                    <option value="Other">
+                        Other
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <!-- LOCATION -->
+
+            <div class="hazard-field">
+
+                <label for="hazardLocation">
+                    Location
+                </label>
+
+                <input
+                    type="text"
+                    id="hazardLocation"
+                    placeholder="Example: Second Floor, Room 204"
+                >
+
+            </div>
+
+
+            <!-- DESCRIPTION -->
+
+            <div class="hazard-field hazard-full">
+
+                <label for="hazardDescription">
+                    Description
+                </label>
+
+                <textarea
+                    id="hazardDescription"
+                    placeholder="Describe the hazard and what you observed..."
+                ></textarea>
+
+            </div>
+
+
+            <!-- SEVERITY -->
+
+            <div class="hazard-field">
+
+                <label for="hazardSeverity">
+                    Severity
+                </label>
+
+                <select id="hazardSeverity">
+
+                    <option value="">
+                        Select severity
+                    </option>
+
+                    <option value="Low">
+                        Low
+                    </option>
+
+                    <option value="Moderate">
+                        Moderate
+                    </option>
+
+                    <option value="High">
+                        High
+                    </option>
+
+                    <option value="Critical">
+                        Critical
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <!-- REPORTER -->
+
+            <div class="hazard-field">
+
+                <label for="reporterName">
+                    Reporter Name
+                </label>
+
+                <input
+                    type="text"
+                    id="reporterName"
+                    placeholder="Enter your name"
+                >
+
+            </div>
+
+
+            <!-- CONTACT -->
+
+            <div class="hazard-field">
+
+                <label for="reporterContact">
+                    Contact Number
+                </label>
+
+                <input
+                    type="tel"
+                    id="reporterContact"
+                    placeholder="Optional contact number"
+                >
+
+            </div>
+
+
+            <!-- SUBMIT -->
+
+            <div class="hazard-submit-area">
+
+                <button
+                    type="button"
+                    id="submitHazardReport"
+                    class="hazard-submit-button"
+                >
+
+                    <i class="fa-solid fa-paper-plane"></i>
+
+                    Submit Hazard Report
+
+                </button>
+
+            </div>
+
+
+            <p
+                id="hazardReportMessage"
+                class="hazard-report-message"
+            ></p>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         COMMON HAZARDS
+    ========================== -->
+
+    <section class="dch-section">
+
+        <div class="section-title">
+
+            <span class="section-tag">
+                WHAT TO REPORT
+            </span>
+
+            <h2>
+                Watch For These Hazards
+            </h2>
+
+            <p>
+                Report conditions that may put students,
+                teachers, staff, or visitors at risk.
+            </p>
+
+        </div>
+
+
+        <div class="dch-grid">
+
+
+            <div class="dch-card">
+
+                <div class="dch-number">
+                    01
+                </div>
+
+                <div class="dch-icon">
+
+                    <i class="fa-solid fa-door-closed"></i>
+
+                </div>
+
+                <h3>
+                    BLOCKED EXITS
+                </h3>
+
+                <p>
+                    Report doors, hallways, stairways, or
+                    emergency exits that are blocked or difficult to access.
+                </p>
+
+            </div>
+
+
+            <div class="dch-card">
+
+                <div class="dch-number">
+                    02
+                </div>
+
+                <div class="dch-icon">
+
+                    <i class="fa-solid fa-bolt"></i>
+
+                </div>
+
+                <h3>
+                    ELECTRICAL HAZARDS
+                </h3>
+
+                <p>
+                    Report exposed wires, damaged outlets,
+                    sparks, or other unsafe electrical conditions.
+                </p>
+
+            </div>
+
+
+            <div class="dch-card">
+
+                <div class="dch-number">
+                    03
+                </div>
+
+                <div class="dch-icon">
+
+                    <i class="fa-solid fa-person-falling"></i>
+
+                </div>
+
+                <h3>
+                    SLIPPERY AREAS
+                </h3>
+
+                <p>
+                    Report wet floors, spills, or other
+                    conditions that could cause someone to fall.
+                </p>
+
+            </div>
+
+
+            <div class="dch-card">
+
+                <div class="dch-number">
+                    04
+                </div>
+
+                <div class="dch-icon">
+
+                    <i class="fa-solid fa-building-circle-exclamation"></i>
+
+                </div>
+
+                <h3>
+                    DAMAGED FACILITIES
+                </h3>
+
+                <p>
+                    Report damaged walls, ceilings, stairs,
+                    windows, furniture, or other facilities.
+                </p>
+
+            </div>
+
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         REMINDER
+    ========================== -->
+
+    <section class="cctc-reminder">
+
+        <div class="cctc-reminder-icon">
+
+            <i class="fa-solid fa-shield-heart"></i>
+
+        </div>
+
+
+        <div>
+
+            <span>
+                SAFETY REMINDER
+            </span>
+
+            <h2>
+                Do Not Put Yourself In Danger
+            </h2>
+
+            <p>
+                If a hazard is dangerous or presents an immediate
+                threat, move away from the area and notify a teacher,
+                school personnel, or emergency responder.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         BACK BUTTON
+    ========================== -->
+
+    <div class="back-guide">
+
+        <a href="index.html">
+
+            <i class="fa-solid fa-arrow-left"></i>
+
+            Back to Home
+
+        </a>
+
+    </div>
+
+
+    <!-- =========================
+         FOOTER
+    ========================== -->
+
+    <footer>
+
+        <h3>
+            CCTC Disaster Ready Portal
+        </h3>
+
+        <p>
+            Prepared Today. Safe Tomorrow.
+        </p>
+
+        <p>
+            Consolatrix College of Toledo City
+        </p>
+
+    </footer>
+
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>

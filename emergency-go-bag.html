@@ -1,0 +1,701 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Emergency Go Bag | CCTC Disaster Ready</title>
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <link rel="stylesheet" href="styles.css">
+
+</head>
+
+
+<body>
+
+
+<!-- =========================
+     NAVBAR
+========================= -->
+
+<nav class="navbar">
+
+    <div class="logo">
+
+        <div class="logo-icon">
+            <i class="fa-solid fa-shield-halved"></i>
+        </div>
+
+        <span>CCTC Disaster Ready</span>
+
+    </div>
+
+
+    <div class="nav-links">
+
+        <a href="index.html">Home</a>
+
+        <a href="#">About</a>
+
+        <a href="#">Content</a>
+
+        <a href="#">Others</a>
+
+    </div>
+
+
+    <button class="profile-button">
+        <i class="fa-solid fa-user"></i>
+    </button>
+
+</nav>
+
+
+
+<!-- =========================
+     HERO
+========================= -->
+
+<section class="earthquake-hero go-bag-page">
+
+    <div class="breadcrumb">
+
+        <a href="index.html">Home</a>
+
+        <i class="fa-solid fa-chevron-right"></i>
+
+        <span>Emergency Go Bag</span>
+
+    </div>
+
+
+    <div class="earthquake-hero-content">
+
+        <div class="disaster-label">
+
+            <i class="fa-solid fa-bag-shopping"></i>
+
+            EMERGENCY GO BAG
+
+        </div>
+
+
+        <h1>
+
+            Pack Smart.<br>
+
+            <span>Be Ready To Go.</span>
+
+        </h1>
+
+
+        <p>
+
+            Prepare an emergency go bag with essential
+            supplies that your family may need during
+            evacuation or an unexpected emergency.
+
+        </p>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================
+     GO BAG CONTENT
+========================= -->
+
+<section class="dch-section go-bag-section">
+
+    <div class="go-bag-container">
+
+
+        <div class="section-title">
+
+            <span class="section-tag">
+                GO BAG ESSENTIALS
+            </span>
+
+            <h2>
+                What Should You Pack?
+            </h2>
+
+            <p>
+                Choose practical items that are easy to
+                carry and useful during an emergency.
+            </p>
+
+        </div>
+
+
+
+        <!-- =========================
+             CHECKLIST
+        ========================= -->
+
+        <div class="go-bag-checklist-card">
+
+            <div class="go-bag-checklist-header">
+
+                <div>
+
+                    <h3>
+                        <i class="fa-solid fa-list-check"></i>
+                        Emergency Go Bag Checklist
+                    </h3>
+
+                    <p>
+                        Check the items you already have
+                        prepared for your emergency bag.
+                    </p>
+
+                </div>
+
+
+                <span id="goBagProgress">
+                    0%
+                </span>
+
+            </div>
+
+
+            <div class="go-bag-checklist">
+
+
+                <label class="go-bag-item">
+
+                    <input type="checkbox"
+                           class="go-bag-checkbox"
+                           data-item="water">
+
+                    <span>
+                        Drinking water
+                    </span>
+
+                </label>
+
+
+                <label class="go-bag-item">
+
+                    <input type="checkbox"
+                           class="go-bag-checkbox"
+                           data-item="food">
+
+                    <span>
+                        Ready-to-eat food
+                    </span>
+
+                </label>
+
+
+                <label class="go-bag-item">
+
+                    <input type="checkbox"
+                           class="go-bag-checkbox"
+                           data-item="first-aid">
+
+                    <span>
+                        First-aid kit
+                    </span>
+
+                </label>
+
+
+                <label class="go-bag-item">
+
+                    <input type="checkbox"
+                           class="go-bag-checkbox"
+                           data-item="medicine">
+
+                    <span>
+                        Needed medicines
+                    </span>
+
+                </label>
+
+
+                <label class="go-bag-item">
+
+                    <input type="checkbox"
+                           class="go-bag-checkbox"
+                           data-item="flashlight">
+
+                    <span>
+                        Flashlight
+                    </span>
+
+                </label>
+
+
+                <label class="go-bag-item">
+
+                    <input type="checkbox"
+                           class="go-bag-checkbox"
+                           data-item="batteries">
+
+                    <span>
+                        Extra batteries
+                    </span>
+
+                </label>
+
+
+                <label class="go-bag-item">
+
+                    <input type="checkbox"
+                           class="go-bag-checkbox"
+                           data-item="powerbank">
+
+                    <span>
+                        Power bank and charging cable
+                    </span>
+
+                </label>
+
+
+                <label class="go-bag-item">
+
+                    <input type="checkbox"
+                           class="go-bag-checkbox"
+                           data-item="documents">
+
+                    <span>
+                        Important documents and copies
+                    </span>
+
+                </label>
+
+
+                <label class="go-bag-item">
+
+                    <input type="checkbox"
+                           class="go-bag-checkbox"
+                           data-item="money">
+
+                    <span>
+                        Emergency cash
+                    </span>
+
+                </label>
+
+
+                <label class="go-bag-item">
+
+                    <input type="checkbox"
+                           class="go-bag-checkbox"
+                           data-item="clothes">
+
+                    <span>
+                        Extra clothes
+                    </span>
+
+                </label>
+
+
+                <label class="go-bag-item">
+
+                    <input type="checkbox"
+                           class="go-bag-checkbox"
+                           data-item="hygiene">
+
+                    <span>
+                        Personal hygiene items
+                    </span>
+
+                </label>
+
+
+                <label class="go-bag-item">
+
+                    <input type="checkbox"
+                           class="go-bag-checkbox"
+                           data-item="communication">
+
+                    <span>
+                        Whistle or communication device
+                    </span>
+
+                </label>
+
+
+            </div>
+
+
+            <button id="clearGoBag"
+                    class="clear-go-bag">
+
+                <i class="fa-solid fa-rotate-left"></i>
+
+                Reset Checklist
+
+            </button>
+
+
+            <p id="goBagMessage"
+               class="go-bag-message">
+            </p>
+
+        </div>
+
+
+
+        <!-- =========================
+             CATEGORIES
+        ========================= -->
+
+        <div class="section-title go-bag-category-title">
+
+            <span class="section-tag">
+                PACK BY CATEGORY
+            </span>
+
+            <h2>
+                Essential Supplies
+            </h2>
+
+        </div>
+
+
+        <div class="dch-grid">
+
+
+            <div class="dch-card">
+
+                <div class="dch-number">
+                    01
+                </div>
+
+                <div class="dch-icon">
+
+                    <i class="fa-solid fa-bottle-water"></i>
+
+                </div>
+
+                <h3>
+                    Water & Food
+                </h3>
+
+                <p>
+                    Pack drinking water and ready-to-eat
+                    food that can be stored and carried
+                    easily.
+                </p>
+
+            </div>
+
+
+
+            <div class="dch-card">
+
+                <div class="dch-number">
+                    02
+                </div>
+
+                <div class="dch-icon">
+
+                    <i class="fa-solid fa-kit-medical"></i>
+
+                </div>
+
+                <h3>
+                    First Aid & Medicines
+                </h3>
+
+                <p>
+                    Include a basic first-aid kit and
+                    medicines that your family may
+                    regularly need.
+                </p>
+
+            </div>
+
+
+
+            <div class="dch-card">
+
+                <div class="dch-number">
+                    03
+                </div>
+
+                <div class="dch-icon">
+
+                    <i class="fa-solid fa-lightbulb"></i>
+
+                </div>
+
+                <h3>
+                    Light & Power
+                </h3>
+
+                <p>
+                    Bring a flashlight, extra batteries,
+                    power bank, and charging cables.
+                </p>
+
+            </div>
+
+
+
+            <div class="dch-card">
+
+                <div class="dch-number">
+                    04
+                </div>
+
+                <div class="dch-icon">
+
+                    <i class="fa-solid fa-file-shield"></i>
+
+                </div>
+
+                <h3>
+                    Important Documents
+                </h3>
+
+                <p>
+                    Keep copies of important documents
+                    protected in a waterproof container.
+                </p>
+
+            </div>
+
+
+
+            <div class="dch-card">
+
+                <div class="dch-number">
+                    05
+                </div>
+
+                <div class="dch-icon">
+
+                    <i class="fa-solid fa-shirt"></i>
+
+                </div>
+
+                <h3>
+                    Clothing & Hygiene
+                </h3>
+
+                <p>
+                    Prepare extra clothes, personal
+                    hygiene supplies, and other basic
+                    personal needs.
+                </p>
+
+            </div>
+
+
+
+            <div class="dch-card">
+
+                <div class="dch-number">
+                    06
+                </div>
+
+                <div class="dch-icon">
+
+                    <i class="fa-solid fa-tower-broadcast"></i>
+
+                </div>
+
+                <h3>
+                    Communication & Tools
+                </h3>
+
+                <p>
+                    Include items such as a whistle,
+                    basic tools, and other useful
+                    emergency supplies.
+                </p>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================
+     GO BAG TIPS
+========================= -->
+
+<section class="timeline-section">
+
+    <div class="section-title">
+
+        <span class="section-tag">
+            GO BAG TIPS
+        </span>
+
+        <h2>
+            Keep Your Bag Ready
+        </h2>
+
+    </div>
+
+
+    <div class="safety-block">
+
+
+        <div class="safety-icon">
+
+            <i class="fa-solid fa-weight-hanging"></i>
+
+        </div>
+
+
+        <div class="safety-content">
+
+            <h3>
+                Keep It Easy To Carry
+            </h3>
+
+            <p>
+                Avoid packing unnecessary items. Your
+                emergency bag should be practical and
+                comfortable enough to carry during
+                evacuation.
+            </p>
+
+        </div>
+
+    </div>
+
+
+
+    <div class="safety-block">
+
+
+        <div class="safety-icon">
+
+            <i class="fa-solid fa-arrows-rotate"></i>
+
+        </div>
+
+
+        <div class="safety-content">
+
+            <h3>
+                Check Supplies Regularly
+            </h3>
+
+            <p>
+                Check your emergency supplies regularly
+                and replace expired, damaged, or used
+                items.
+            </p>
+
+        </div>
+
+    </div>
+
+
+
+    <div class="safety-block">
+
+
+        <div class="safety-icon">
+
+            <i class="fa-solid fa-location-dot"></i>
+
+        </div>
+
+
+        <div class="safety-content">
+
+            <h3>
+                Keep It Accessible
+            </h3>
+
+            <p>
+                Store the go bag in a place where family
+                members can easily find and grab it when
+                an emergency requires evacuation.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================
+     CCTC REMINDER
+========================= -->
+
+<section class="cctc-reminder">
+
+    <div class="cctc-reminder-icon">
+
+        <i class="fa-solid fa-shield-halved"></i>
+
+    </div>
+
+
+    <div>
+
+        <h3>
+            CCTC Safety Reminder
+        </h3>
+
+        <p>
+            Prepare your emergency bag before an
+            emergency happens. Know where it is and
+            make sure your family members know what
+            to do during evacuation.
+        </p>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================
+     BACK BUTTON
+========================= -->
+
+<a href="index.html" class="back-guide">
+
+    <i class="fa-solid fa-arrow-left"></i>
+
+    Back to Home
+
+</a>
+
+
+
+<!-- =========================
+     FOOTER
+========================= -->
+
+<footer>
+
+    <p>
+        © 2026 CCTC Disaster Ready Portal.
+        Preparedness starts with you.
+    </p>
+
+</footer>
+
+
+
+<script src="script.js"></script>
+
+</body>
+
+</html>

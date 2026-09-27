@@ -1,0 +1,839 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Emergency Contacts | CCTC Disaster Ready</title>
+
+    <link rel="stylesheet" href="styles.css">
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet"
+    >
+
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    >
+
+
+    <style>
+
+        /* =========================
+           EMERGENCY CONTACTS PAGE
+        ========================= */
+
+        .contacts-hero {
+            padding: 55px 8% 65px;
+        }
+
+
+        .contacts-hero-content {
+            max-width: 850px;
+            margin: 55px auto 0;
+            text-align: center;
+        }
+
+
+        .contacts-hero h1 {
+            font-size: 58px;
+            line-height: 1.05;
+            margin: 20px 0;
+            font-weight: 800;
+        }
+
+
+        .contacts-hero h1 span {
+            color: var(--peach);
+        }
+
+
+        .contacts-hero p {
+            max-width: 700px;
+            margin: 0 auto;
+            color: var(--light-text);
+            line-height: 1.8;
+            font-size: 17px;
+        }
+
+
+        /* =========================
+           EMERGENCY NOTICE
+        ========================= */
+
+        .emergency-notice {
+            max-width: 1100px;
+            margin: 0 auto 45px;
+            padding: 0 25px;
+        }
+
+
+        .notice-box {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            background: rgba(186, 27, 24, 0.18);
+            border: 1px solid rgba(234, 136, 113, 0.3);
+            border-radius: 20px;
+            padding: 25px 30px;
+        }
+
+
+        .notice-icon {
+            width: 58px;
+            height: 58px;
+            min-width: 58px;
+            border-radius: 50%;
+            background: rgba(234, 136, 113, 0.18);
+            color: var(--peach);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+        }
+
+
+        .notice-box h3 {
+            margin: 0 0 7px;
+        }
+
+
+        .notice-box p {
+            margin: 0;
+            color: var(--light-text);
+            line-height: 1.6;
+        }
+
+
+        /* =========================
+           CONTACTS
+        ========================= */
+
+        .contacts-section {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 25px 70px;
+        }
+
+
+        .contacts-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 25px;
+        }
+
+
+        .contact-card {
+            position: relative;
+            background: rgba(255, 255, 255, 0.07);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            border-radius: 20px;
+            padding: 30px;
+            transition: transform 0.2s ease,
+                        border-color 0.2s ease;
+        }
+
+
+        .contact-card:hover {
+            transform: translateY(-3px);
+            border-color: rgba(234, 136, 113, 0.4);
+        }
+
+
+        .contact-header {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 20px;
+        }
+
+
+        .contact-icon {
+            width: 55px;
+            height: 55px;
+            border-radius: 14px;
+            background: rgba(234, 136, 113, 0.18);
+            color: var(--peach);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 22px;
+            flex-shrink: 0;
+        }
+
+
+        .contact-header h3 {
+            margin: 0;
+            font-size: 21px;
+        }
+
+
+        .contact-header p {
+            margin: 5px 0 0;
+            color: var(--light-text);
+            font-size: 14px;
+        }
+
+
+        .contact-number {
+            display: block;
+            font-size: 28px;
+            font-weight: 800;
+            color: var(--white);
+            margin: 10px 0 18px;
+        }
+
+
+        .call-button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 9px;
+            padding: 11px 18px;
+            border-radius: 10px;
+            background: var(--peach);
+            color: var(--dark-brown);
+            text-decoration: none;
+            font-weight: 700;
+            transition: 0.2s;
+        }
+
+
+        .call-button:hover {
+            opacity: 0.9;
+            transform: translateY(-1px);
+        }
+
+
+        .contact-placeholder {
+            color: var(--light-text);
+            line-height: 1.6;
+            margin-bottom: 18px;
+        }
+
+
+        /* =========================
+           CCTC CONTACT
+        ========================= */
+
+        .school-contact {
+            margin-top: 25px;
+            background: rgba(82, 96, 34, 0.3);
+            border: 1px solid rgba(226, 211, 122, 0.2);
+        }
+
+
+        .school-contact .contact-icon {
+            background: rgba(226, 211, 122, 0.15);
+            color: var(--yellow);
+        }
+
+
+        /* =========================
+           SAFETY REMINDER
+        ========================= */
+
+        .contacts-reminder {
+            max-width: 1100px;
+            margin: 0 auto 60px;
+            padding: 0 25px;
+        }
+
+
+        .reminder-box {
+            display: flex;
+            align-items: flex-start;
+            gap: 20px;
+            background: rgba(255, 255, 255, 0.07);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            border-radius: 20px;
+            padding: 28px 30px;
+        }
+
+
+        .reminder-icon {
+            width: 55px;
+            height: 55px;
+            min-width: 55px;
+            border-radius: 50%;
+            background: rgba(226, 211, 122, 0.15);
+            color: var(--yellow);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 22px;
+        }
+
+
+        .reminder-box h3 {
+            margin: 0 0 8px;
+        }
+
+
+        .reminder-box p {
+            margin: 0;
+            color: var(--light-text);
+            line-height: 1.7;
+        }
+
+
+        /* =========================
+           RESPONSIVE
+        ========================= */
+
+        @media (max-width: 768px) {
+
+            .contacts-hero {
+                padding: 40px 6% 50px;
+            }
+
+
+            .contacts-hero h1 {
+                font-size: 42px;
+            }
+
+
+            .contacts-grid {
+                grid-template-columns: 1fr;
+            }
+
+
+            .emergency-notice,
+            .contacts-section,
+            .contacts-reminder {
+                padding-left: 18px;
+                padding-right: 18px;
+            }
+
+        }
+
+
+        @media (max-width: 500px) {
+
+            .contacts-hero h1 {
+                font-size: 34px;
+            }
+
+
+            .notice-box,
+            .reminder-box {
+                padding: 22px;
+            }
+
+
+            .contact-card {
+                padding: 23px;
+            }
+
+
+            .contact-number {
+                font-size: 24px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<!-- =========================
+     NAVBAR
+========================= -->
+
+<nav class="navbar">
+
+    <div class="logo">
+
+        <div class="logo-icon">
+            <i class="fa-solid fa-shield-halved"></i>
+        </div>
+
+        <span>CCTC Disaster Ready</span>
+
+    </div>
+
+
+    <div class="nav-links">
+
+        <a href="index.html">Home</a>
+
+        <a href="#">About</a>
+
+        <a href="#">Content</a>
+
+        <a href="#">Others</a>
+
+    </div>
+
+
+    <button class="profile-button">
+        <i class="fa-solid fa-user"></i>
+    </button>
+
+</nav>
+
+
+
+<!-- =========================
+     HERO
+========================= -->
+
+<section class="contacts-hero">
+
+    <div class="breadcrumb">
+
+        <a href="index.html">
+            Home
+        </a>
+
+        <i class="fa-solid fa-chevron-right"></i>
+
+        <span>
+            Emergency Contacts
+        </span>
+
+    </div>
+
+
+    <div class="contacts-hero-content">
+
+        <div class="disaster-label">
+
+            <i class="fa-solid fa-phone-volume"></i>
+
+            EMERGENCY INFORMATION
+
+        </div>
+
+
+        <h1>
+
+            Know Who<br>
+
+            <span>To Call.</span>
+
+        </h1>
+
+
+        <p>
+
+            Keep important emergency contacts easy to find.
+            During a serious emergency, stay calm, provide
+            accurate information, and follow the instructions
+            of emergency responders.
+
+        </p>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================
+     EMERGENCY NOTICE
+========================= -->
+
+<section class="emergency-notice">
+
+    <div class="notice-box">
+
+        <div class="notice-icon">
+
+            <i class="fa-solid fa-triangle-exclamation"></i>
+
+        </div>
+
+
+        <div>
+
+            <h3>
+                For Life-Threatening Emergencies
+            </h3>
+
+            <p>
+                Call the national emergency hotline when
+                immediate police, fire, medical, or rescue
+                assistance is needed.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================
+     CONTACTS
+========================= -->
+
+<section class="contacts-section">
+
+    <div class="contacts-grid">
+
+
+        <!-- 911 -->
+
+        <div class="contact-card">
+
+            <div class="contact-header">
+
+                <div class="contact-icon">
+
+                    <i class="fa-solid fa-phone"></i>
+
+                </div>
+
+                <div>
+
+                    <h3>
+                        National Emergency Hotline
+                    </h3>
+
+                    <p>
+                        Police, fire, medical, and rescue emergencies
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <span class="contact-number">
+                911
+            </span>
+
+
+            <a
+                href="tel:911"
+                class="call-button"
+            >
+
+                <i class="fa-solid fa-phone"></i>
+
+                Call 911
+
+            </a>
+
+        </div>
+
+
+
+        <!-- FIRE -->
+
+        <div class="contact-card">
+
+            <div class="contact-header">
+
+                <div class="contact-icon">
+
+                    <i class="fa-solid fa-fire-extinguisher"></i>
+
+                </div>
+
+                <div>
+
+                    <h3>
+                        Fire Emergency
+                    </h3>
+
+                    <p>
+                        Fire and rescue assistance
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <span class="contact-number">
+                911
+            </span>
+
+
+            <a
+                href="tel:911"
+                class="call-button"
+            >
+
+                <i class="fa-solid fa-phone"></i>
+
+                Call 911
+
+            </a>
+
+        </div>
+
+
+
+        <!-- MEDICAL -->
+
+        <div class="contact-card">
+
+            <div class="contact-header">
+
+                <div class="contact-icon">
+
+                    <i class="fa-solid fa-truck-medical"></i>
+
+                </div>
+
+                <div>
+
+                    <h3>
+                        Medical Emergency
+                    </h3>
+
+                    <p>
+                        Immediate medical assistance
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <span class="contact-number">
+                911
+            </span>
+
+
+            <a
+                href="tel:911"
+                class="call-button"
+            >
+
+                <i class="fa-solid fa-phone"></i>
+
+                Call 911
+
+            </a>
+
+        </div>
+
+
+
+        <!-- POLICE -->
+
+        <div class="contact-card">
+
+            <div class="contact-header">
+
+                <div class="contact-icon">
+
+                    <i class="fa-solid fa-shield-halved"></i>
+
+                </div>
+
+                <div>
+
+                    <h3>
+                        Police Emergency
+                    </h3>
+
+                    <p>
+                        Immediate police assistance
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <span class="contact-number">
+                911
+            </span>
+
+
+            <a
+                href="tel:911"
+                class="call-button"
+            >
+
+                <i class="fa-solid fa-phone"></i>
+
+                Call 911
+
+            </a>
+
+        </div>
+
+
+
+        <!-- CCTC -->
+
+        <div class="contact-card school-contact">
+
+            <div class="contact-header">
+
+                <div class="contact-icon">
+
+                    <i class="fa-solid fa-school"></i>
+
+                </div>
+
+                <div>
+
+                    <h3>
+                        CCTC Emergency Contact
+                    </h3>
+
+                    <p>
+                        School emergency information
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <p class="contact-placeholder">
+
+                Contact information can be added here
+                once the official CCTC emergency contact
+                number is provided.
+
+            </p>
+
+
+            <span class="contact-number">
+                To Be Added
+            </span>
+
+        </div>
+
+
+
+        <!-- ASSEMBLY AREA -->
+
+        <div class="contact-card school-contact">
+
+            <div class="contact-header">
+
+                <div class="contact-icon">
+
+                    <i class="fa-solid fa-location-dot"></i>
+
+                </div>
+
+                <div>
+
+                    <h3>
+                        CCTC Assembly Area
+                    </h3>
+
+                    <p>
+                        Designated emergency meeting location
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <p class="contact-placeholder">
+
+                Add the official CCTC designated assembly
+                area here so students and personnel know
+                where to proceed during evacuation.
+
+            </p>
+
+
+            <span class="contact-number">
+                To Be Added
+            </span>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================
+     SAFETY REMINDER
+========================= -->
+
+<section class="contacts-reminder">
+
+    <div class="reminder-box">
+
+        <div class="reminder-icon">
+
+            <i class="fa-solid fa-shield-heart"></i>
+
+        </div>
+
+
+        <div>
+
+            <h3>
+                When Calling for Help
+            </h3>
+
+            <p>
+                Stay calm and clearly provide your name,
+                location, type of emergency, and any important
+                information about people who may need help.
+                Follow the instructions given by the emergency
+                responder.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================
+     BACK TO HOME
+========================= -->
+
+<div class="back-guide">
+
+    <a href="index.html">
+
+        <i class="fa-solid fa-arrow-left"></i>
+
+        Back to Home
+
+    </a>
+
+</div>
+
+
+
+<!-- =========================
+     FOOTER
+========================= -->
+
+<footer>
+
+    <p>
+        © 2026 CCTC Disaster Ready Portal.
+        Stay informed. Stay prepared. Stay safe.
+    </p>
+
+</footer>
+
+
+
+<script src="script.js"></script>
+
+</body>
+
+</html>

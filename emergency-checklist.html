@@ -1,0 +1,1119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Emergency Checklist | CCTC Disaster Ready</title>
+
+    <link rel="stylesheet" href="styles.css">
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet"
+    >
+
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    >
+
+
+    <style>
+
+        /* =========================
+           CHECKLIST PAGE
+        ========================= */
+
+        .checklist-hero {
+            padding: 55px 8% 70px;
+        }
+
+
+        .checklist-hero-content {
+            max-width: 850px;
+            margin: 55px auto 0;
+            text-align: center;
+        }
+
+
+        .checklist-hero h1 {
+            font-size: 58px;
+            line-height: 1.05;
+            margin: 20px 0;
+            font-weight: 800;
+        }
+
+
+        .checklist-hero h1 span {
+            color: var(--peach);
+        }
+
+
+        .checklist-hero p {
+            max-width: 700px;
+            margin: 0 auto;
+            color: var(--light-text);
+            line-height: 1.8;
+            font-size: 17px;
+        }
+
+
+        /* =========================
+           PROGRESS
+        ========================= */
+
+        .progress-section {
+            max-width: 1100px;
+            margin: 0 auto 50px;
+            padding: 0 25px;
+        }
+
+
+        .progress-card {
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            border-radius: 20px;
+            padding: 25px 30px;
+            backdrop-filter: blur(8px);
+        }
+
+
+        .progress-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+
+        .progress-top h3 {
+            margin: 0;
+            font-size: 18px;
+        }
+
+
+        .progress-percentage {
+            font-size: 22px;
+            font-weight: 800;
+            color: var(--yellow);
+        }
+
+
+        .progress-bar {
+            width: 100%;
+            height: 12px;
+            background: rgba(255, 255, 255, 0.12);
+            border-radius: 20px;
+            overflow: hidden;
+        }
+
+
+        .progress-fill {
+            width: 0%;
+            height: 100%;
+            background: var(--peach);
+            border-radius: 20px;
+            transition: width 0.3s ease;
+        }
+
+
+        /* =========================
+           CHECKLIST
+        ========================= */
+
+        .checklist-section {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 25px 70px;
+        }
+
+
+        .checklist-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 25px;
+        }
+
+
+        .checklist-card {
+            background: rgba(255, 255, 255, 0.07);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            border-radius: 20px;
+            padding: 30px;
+        }
+
+
+        .checklist-card-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 22px;
+        }
+
+
+        .checklist-icon {
+            width: 52px;
+            height: 52px;
+            border-radius: 14px;
+            background: rgba(234, 136, 113, 0.18);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 22px;
+            color: var(--peach);
+            flex-shrink: 0;
+        }
+
+
+        .checklist-card h3 {
+            margin: 0;
+            font-size: 21px;
+        }
+
+
+        .checklist-card p {
+            margin: 5px 0 0;
+            color: var(--light-text);
+            font-size: 14px;
+        }
+
+
+        .check-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            padding: 13px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+            cursor: pointer;
+        }
+
+
+        .check-item:last-child {
+            border-bottom: none;
+        }
+
+
+        .check-item input {
+            width: 19px;
+            height: 19px;
+            margin-top: 2px;
+            accent-color: var(--peach);
+            cursor: pointer;
+            flex-shrink: 0;
+        }
+
+
+        .check-item span {
+            line-height: 1.5;
+            color: rgba(255, 255, 255, 0.9);
+            transition: 0.2s;
+        }
+
+
+        .check-item input:checked + span {
+            text-decoration: line-through;
+            opacity: 0.55;
+        }
+
+
+        /* =========================
+           REMINDER
+        ========================= */
+
+        .checklist-reminder {
+            max-width: 1100px;
+            margin: 0 auto 60px;
+            padding: 0 25px;
+        }
+
+
+        .reminder-box {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            background: rgba(82, 96, 34, 0.35);
+            border: 1px solid rgba(226, 211, 122, 0.25);
+            border-radius: 20px;
+            padding: 25px 30px;
+        }
+
+
+        .reminder-icon {
+            width: 55px;
+            height: 55px;
+            min-width: 55px;
+            border-radius: 50%;
+            background: rgba(226, 211, 122, 0.15);
+            color: var(--yellow);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 22px;
+        }
+
+
+        .reminder-box h3 {
+            margin: 0 0 7px;
+        }
+
+
+        .reminder-box p {
+            margin: 0;
+            color: var(--light-text);
+            line-height: 1.6;
+        }
+
+
+        /* =========================
+           RESPONSIVE
+        ========================= */
+
+        @media (max-width: 768px) {
+
+            .checklist-hero {
+                padding: 40px 6% 50px;
+            }
+
+
+            .checklist-hero h1 {
+                font-size: 42px;
+            }
+
+
+            .checklist-grid {
+                grid-template-columns: 1fr;
+            }
+
+
+            .progress-section,
+            .checklist-section,
+            .checklist-reminder {
+                padding-left: 18px;
+                padding-right: 18px;
+            }
+
+
+            .reminder-box {
+                align-items: flex-start;
+            }
+
+        }
+
+
+        @media (max-width: 500px) {
+
+            .checklist-hero h1 {
+                font-size: 34px;
+            }
+
+
+            .progress-card,
+            .checklist-card {
+                padding: 22px;
+            }
+
+
+            .progress-top {
+                gap: 10px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<!-- =========================
+     NAVBAR
+========================= -->
+
+<nav class="navbar">
+
+    <div class="logo">
+
+        <div class="logo-icon">
+            <i class="fa-solid fa-shield-halved"></i>
+        </div>
+
+        <span>CCTC Disaster Ready</span>
+
+    </div>
+
+
+    <div class="nav-links">
+
+        <a href="index.html">Home</a>
+
+        <a href="#">About</a>
+
+        <a href="#">Content</a>
+
+        <a href="#">Others</a>
+
+    </div>
+
+
+    <button class="profile-button">
+        <i class="fa-solid fa-user"></i>
+    </button>
+
+</nav>
+
+
+
+<!-- =========================
+     HERO
+========================= -->
+
+<section class="checklist-hero">
+
+    <div class="breadcrumb">
+
+        <a href="index.html">
+            Home
+        </a>
+
+        <i class="fa-solid fa-chevron-right"></i>
+
+        <span>
+            Emergency Checklist
+        </span>
+
+    </div>
+
+
+    <div class="checklist-hero-content">
+
+        <div class="disaster-label">
+
+            <i class="fa-solid fa-clipboard-check"></i>
+
+            EMERGENCY PREPAREDNESS
+
+        </div>
+
+
+        <h1>
+
+            Be Ready.<br>
+
+            <span>Check Your Supplies.</span>
+
+        </h1>
+
+
+        <p>
+
+            Use this checklist to make sure you have the
+            important supplies, information, and plans needed
+            during an emergency.
+
+        </p>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================
+     PROGRESS
+========================= -->
+
+<section class="progress-section">
+
+    <div class="progress-card">
+
+        <div class="progress-top">
+
+            <h3>
+                Your Preparedness Progress
+            </h3>
+
+            <span
+                class="progress-percentage"
+                id="checklistProgress"
+            >
+                0%
+            </span>
+
+        </div>
+
+
+        <div class="progress-bar">
+
+            <div
+                class="progress-fill"
+                id="progressFill"
+            ></div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================
+     CHECKLIST
+========================= -->
+
+<section class="checklist-section">
+
+    <div class="checklist-grid">
+
+
+        <!-- =========================
+             GO BAG
+        ========================= -->
+
+        <div class="checklist-card">
+
+            <div class="checklist-card-header">
+
+                <div class="checklist-icon">
+
+                    <i class="fa-solid fa-suitcase"></i>
+
+                </div>
+
+                <div>
+
+                    <h3>
+                        Emergency Go Bag
+                    </h3>
+
+                    <p>
+                        Essential items to bring during evacuation.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <label class="check-item">
+
+                <input type="checkbox">
+
+                <span>
+                    Drinking water
+                </span>
+
+            </label>
+
+
+            <label class="check-item">
+
+                <input type="checkbox">
+
+                <span>
+                    Ready-to-eat food
+                </span>
+
+            </label>
+
+
+            <label class="check-item">
+
+                <input type="checkbox">
+
+                <span>
+                    Flashlight and extra batteries
+                </span>
+
+            </label>
+
+
+            <label class="check-item">
+
+                <input type="checkbox">
+
+                <span>
+                    Basic first-aid supplies
+                </span>
+
+            </label>
+
+
+            <label class="check-item">
+
+                <input type="checkbox">
+
+                <span>
+                    Personal medicines
+                </span>
+
+            </label>
+
+
+            <label class="check-item">
+
+                <input type="checkbox">
+
+                <span>
+                    Extra clothes
+                </span>
+
+            </label>
+
+        </div>
+
+
+
+        <!-- =========================
+             IMPORTANT DOCUMENTS
+        ========================= -->
+
+        <div class="checklist-card">
+
+            <div class="checklist-card-header">
+
+                <div class="checklist-icon">
+
+                    <i class="fa-solid fa-file-shield"></i>
+
+                </div>
+
+                <div>
+
+                    <h3>
+                        Important Documents
+                    </h3>
+
+                    <p>
+                        Keep important information protected.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <label class="check-item">
+
+                <input type="checkbox">
+
+                <span>
+                    Identification cards
+                </span>
+
+            </label>
+
+
+            <label class="check-item">
+
+                <input type="checkbox">
+
+                <span>
+                    Important school documents
+                </span>
+
+            </label>
+
+
+            <label class="check-item">
+
+                <input type="checkbox">
+
+                <span>
+                    Emergency contact information
+                </span>
+
+            </label>
+
+
+            <label class="check-item">
+
+                <input type="checkbox">
+
+                <span>
+                    Copies of important documents
+                </span>
+
+            </label>
+
+        </div>
+
+
+
+        <!-- =========================
+             COMMUNICATION
+        ========================= -->
+
+        <div class="checklist-card">
+
+            <div class="checklist-card-header">
+
+                <div class="checklist-icon">
+
+                    <i class="fa-solid fa-mobile-screen-button"></i>
+
+                </div>
+
+                <div>
+
+                    <h3>
+                        Communication
+                    </h3>
+
+                    <p>
+                        Stay connected during emergencies.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <label class="check-item">
+
+                <input type="checkbox">
+
+                <span>
+                    Phone is fully charged
+                </span>
+
+            </label>
+
+
+            <label class="check-item">
+
+                <input type="checkbox">
+
+                <span>
+                    Power bank is charged
+                </span>
+
+            </label>
+
+
+            <label class="check-item">
+
+                <input type="checkbox">
+
+                <span>
+                    Emergency contacts are saved
+                </span>
+
+            </label>
+
+
+            <label class="check-item">
+
+                <input type="checkbox">
+
+                <span>
+                    Family or emergency communication plan
+                </span>
+
+            </label>
+
+        </div>
+
+
+
+        <!-- =========================
+             EVACUATION PLAN
+        ========================= -->
+
+        <div class="checklist-card">
+
+            <div class="checklist-card-header">
+
+                <div class="checklist-icon">
+
+                    <i class="fa-solid fa-route"></i>
+
+                </div>
+
+                <div>
+
+                    <h3>
+                        Evacuation Plan
+                    </h3>
+
+                    <p>
+                        Know where to go and what to do.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <label class="check-item">
+
+                <input type="checkbox">
+
+                <span>
+                    I know my evacuation route
+                </span>
+
+            </label>
+
+
+            <label class="check-item">
+
+                <input type="checkbox">
+
+                <span>
+                    I know the designated assembly area
+                </span>
+
+            </label>
+
+
+            <label class="check-item">
+
+                <input type="checkbox">
+
+                <span>
+                    I know the emergency exits
+                </span>
+
+            </label>
+
+
+            <label class="check-item">
+
+                <input type="checkbox">
+
+                <span>
+                    I know who to contact during an emergency
+                </span>
+
+            </label>
+
+        </div>
+
+
+
+        <!-- =========================
+             HEALTH AND SAFETY
+        ========================= -->
+
+        <div class="checklist-card">
+
+            <div class="checklist-card-header">
+
+                <div class="checklist-icon">
+
+                    <i class="fa-solid fa-kit-medical"></i>
+
+                </div>
+
+                <div>
+
+                    <h3>
+                        Health & Safety
+                    </h3>
+
+                    <p>
+                        Prepare for basic health and safety needs.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <label class="check-item">
+
+                <input type="checkbox">
+
+                <span>
+                    First-aid kit is available
+                </span>
+
+            </label>
+
+
+            <label class="check-item">
+
+                <input type="checkbox">
+
+                <span>
+                    Necessary medicines are prepared
+                </span>
+
+            </label>
+
+
+            <label class="check-item">
+
+                <input type="checkbox">
+
+                <span>
+                    Personal hygiene supplies
+                </span>
+
+            </label>
+
+
+            <label class="check-item">
+
+                <input type="checkbox">
+
+                <span>
+                    Face mask or other protective supplies
+                </span>
+
+            </label>
+
+        </div>
+
+
+
+        <!-- =========================
+             SCHOOL PREPAREDNESS
+        ========================= -->
+
+        <div class="checklist-card">
+
+            <div class="checklist-card-header">
+
+                <div class="checklist-icon">
+
+                    <i class="fa-solid fa-school"></i>
+
+                </div>
+
+                <div>
+
+                    <h3>
+                        CCTC Preparedness
+                    </h3>
+
+                    <p>
+                        Know the school's emergency procedures.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <label class="check-item">
+
+                <input type="checkbox">
+
+                <span>
+                    I know the school's emergency exits
+                </span>
+
+            </label>
+
+
+            <label class="check-item">
+
+                <input type="checkbox">
+
+                <span>
+                    I know the designated assembly area
+                </span>
+
+            </label>
+
+
+            <label class="check-item">
+
+                <input type="checkbox">
+
+                <span>
+                    I know the school's evacuation procedures
+                </span>
+
+            </label>
+
+
+            <label class="check-item">
+
+                <input type="checkbox">
+
+                <span>
+                    I will follow teachers and school personnel
+                </span>
+
+            </label>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================
+     REMINDER
+========================= -->
+
+<section class="checklist-reminder">
+
+    <div class="reminder-box">
+
+        <div class="reminder-icon">
+
+            <i class="fa-solid fa-shield-halved"></i>
+
+        </div>
+
+
+        <div>
+
+            <h3>
+                Remember
+            </h3>
+
+            <p>
+                Being prepared is not only about having supplies.
+                Know your evacuation route, listen to official
+                instructions, stay calm, and help others when
+                it is safe to do so.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================
+     BACK TO GUIDES
+========================= -->
+
+<div class="back-guide">
+
+    <a href="disaster-guides.html">
+
+        <i class="fa-solid fa-arrow-left"></i>
+
+        Back to Disaster Guides
+
+    </a>
+
+</div>
+
+
+
+<!-- =========================
+     FOOTER
+========================= -->
+
+<footer>
+
+    <p>
+        © 2026 CCTC Disaster Ready Portal.
+        Stay informed. Stay prepared. Stay safe.
+    </p>
+
+</footer>
+
+
+
+<!-- =========================
+     CHECKLIST JAVASCRIPT
+========================= -->
+
+<script>
+
+    const checkboxes =
+        document.querySelectorAll(".check-item input");
+
+    const progressText =
+        document.getElementById("checklistProgress");
+
+    const progressFill =
+        document.getElementById("progressFill");
+
+
+    function updateChecklistProgress() {
+
+        const total =
+            checkboxes.length;
+
+        let completed = 0;
+
+
+        checkboxes.forEach(function (checkbox) {
+
+            if (checkbox.checked) {
+
+                completed++;
+
+            }
+
+        });
+
+
+        const percentage =
+            Math.round((completed / total) * 100);
+
+
+        progressText.textContent =
+            percentage + "%";
+
+
+        progressFill.style.width =
+            percentage + "%";
+
+
+        localStorage.setItem(
+            "checklistProgress",
+            percentage
+        );
+
+    }
+
+
+    checkboxes.forEach(function (checkbox, index) {
+
+        const saved =
+            localStorage.getItem(
+                "check-" + index
+            );
+
+
+        if (saved === "true") {
+
+            checkbox.checked = true;
+
+        }
+
+
+        checkbox.addEventListener(
+            "change",
+            function () {
+
+                localStorage.setItem(
+                    "check-" + index,
+                    checkbox.checked
+                );
+
+                updateChecklistProgress();
+
+            }
+        );
+
+    });
+
+
+    updateChecklistProgress();
+
+</script>
+
+
+</body>
+
+</html>
