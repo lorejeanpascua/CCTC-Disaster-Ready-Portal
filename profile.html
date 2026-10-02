@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My Profile | CCTC Disaster Ready</title>
+<link rel="stylesheet" href="styles.css">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+</head>
+<body id="profilePage">
+<nav class="navbar">
+<div class="logo"><div class="logo-icon"><i class="fa-solid fa-shield-halved"></i></div><span>CCTC Disaster Ready</span></div>
+<div class="nav-links"><a href="index.html">Home</a><a href="#">About</a><a href="#">Content</a><a href="#">Others</a></div>
+<button class="profile-button" type="button" aria-label="User Profile"><i class="fa-solid fa-user"></i></button>
+</nav>
+<main class="profile-page">
+<section class="page-header account-page-header"><div class="page-header-content">
+<div class="welcome"><i class="fa-solid fa-user"></i><span>Your Account</span></div>
+<h1>My <span>Profile</span></h1>
+<p>Manage your account and keep track of your disaster preparedness progress.</p>
+</div></section>
+<section class="profile-content">
+<div class="profile-card profile-identity">
+<div class="profile-avatar" id="profileInitial">U</div>
+<div class="profile-details"><h2 id="profileName">User</h2><p id="profileEmail">user@example.com</p><span id="memberSince" class="member-since">Member since 2026</span></div>
+</div>
+<div class="profile-stats">
+<div class="profile-card stat-card"><div class="profile-stat-icon"><i class="fa-solid fa-shield-heart"></i></div><div><span>Preparedness</span><strong id="profileProgress">75%</strong></div></div>
+<div class="profile-card stat-card"><div class="profile-stat-icon"><i class="fa-solid fa-suitcase-medical"></i></div><div><span>Go Bag Items</span><strong id="goBagCount">0</strong></div></div>
+</div>
+<div class="profile-card progress-card">
+<div class="profile-section-heading"><div><h2>Preparedness Progress</h2><p>Keep completing activities to improve your readiness.</p></div><strong id="profileProgressValue">75%</strong></div>
+<div class="profile-progress-track"><div id="profileProgressBar" class="profile-progress-bar"></div></div>
+<div class="profile-progress-footer"><span><i class="fa-solid fa-circle-check"></i> Activities saved on this device</span><a href="emergency-checklist.html">Continue Preparing</a></div>
+</div>
+<div class="profile-actions">
+<a href="index.html" class="secondary-button profile-action"><i class="fa-solid fa-house"></i> Back to Dashboard</a>
+<button id="logoutButton" class="primary-button profile-action" type="button"><i class="fa-solid fa-right-from-bracket"></i> Log Out</button>
+</div>
+</section>
+</main>
+<script src="script.js"></script>
+</body>
+</html>

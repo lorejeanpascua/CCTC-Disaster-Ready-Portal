@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Login / Sign Up | CCTC Disaster Ready</title>
+<link rel="stylesheet" href="styles.css">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+</head>
+<body>
+<nav class="navbar">
+<div class="logo"><div class="logo-icon"><i class="fa-solid fa-shield-halved"></i></div><span>CCTC Disaster Ready</span></div>
+<div class="nav-links"><a href="index.html">Home</a><a href="#">About</a><a href="#">Content</a><a href="#">Others</a></div>
+<button class="profile-button" type="button" aria-label="User Profile"><i class="fa-solid fa-user"></i></button>
+</nav>
+<main class="account-page">
+<section class="account-card">
+<div class="account-icon"><i class="fa-solid fa-shield-heart"></i></div>
+<h1 id="authTitle">Welcome Back</h1>
+<p id="authSubtitle">Log in to continue to your Disaster Ready profile.</p>
+<form id="authForm" class="account-form">
+<div class="form-field" id="nameField"><label for="name">Full Name</label><div class="input-wrap"><i class="fa-solid fa-user"></i><input id="name" type="text" placeholder="Enter your full name"></div></div>
+<div class="form-field"><label for="email">Email Address</label><div class="input-wrap"><i class="fa-solid fa-envelope"></i><input id="email" type="email" placeholder="Enter your email" required></div></div>
+<div class="form-field"><label for="password">Password</label><div class="input-wrap"><i class="fa-solid fa-lock"></i><input id="password" type="password" placeholder="Enter your password" required></div></div>
+<p id="authMessage" class="account-message"></p>
+<button class="primary-button account-submit" id="authSubmit" type="submit"><i class="fa-solid fa-right-to-bracket"></i> Log In</button>
+</form>
+<div class="account-switch"><span id="authSwitchText">Don't have an account?</span><button id="authSwitch" type="button">Sign Up</button></div>
+<a class="back-home" href="index.html"><i class="fa-solid fa-arrow-left"></i> Back to Home</a>
+</section>
+</main>
+<script src="script.js"></script>
+</body>
+</html>
