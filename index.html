@@ -12,7 +12,6 @@
 
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
-
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
     <link
@@ -27,76 +26,55 @@
     >
 </head>
 
-
 <body>
 
-    <!-- =========================
-         NAVIGATION BAR
-    ========================== -->
-
+    <!-- NAVIGATION BAR -->
     <nav class="navbar">
 
         <div class="logo">
-
             <div class="logo-icon">
                 <i class="fa-solid fa-shield-halved"></i>
             </div>
 
             <span>CCTC Disaster Ready</span>
-
         </div>
-
 
         <div class="nav-links">
-
-            <a href="#" class="active">Home</a>
-
-            <a href="#">About</a>
-
-            <a href="#">Content</a>
-
-            <a href="#">Others</a>
-
+            <a href="index.html" class="active">Home</a>
+            <a href="#quick-access">Content</a>
+            <a href="about.html">About</a>
         </div>
 
-
-        <button class="profile-button" type="button" aria-label="User Profile">
+        <button
+            class="profile-button"
+            type="button"
+            aria-label="User Profile"
+        >
             <i class="fa-solid fa-user"></i>
         </button>
 
     </nav>
 
-
-
-    <!-- =========================
-         HOME DASHBOARD
-    ========================== -->
-
+    <!-- MAIN CONTENT -->
     <main>
 
-
         <!-- HERO SECTION -->
-
         <section class="hero">
 
             <div class="hero-content">
 
                 <div class="welcome">
-
                     <i class="fa-solid fa-location-dot"></i>
 
                     <span>
                         Consolatrix College of Toledo City
                     </span>
-
                 </div>
-
 
                 <h1>
                     Be Ready.<br>
                     <span>Stay Safe.</span>
                 </h1>
-
 
                 <p>
                     Welcome to the CCTC Disaster Ready Portal.
@@ -104,34 +82,27 @@
                     community for emergencies and disasters.
                 </p>
 
-
                 <div class="hero-buttons">
 
-                    <button class="primary-button">
+                 <!-- START PREPARING BUTTON -->
+                 <a href="emergency-checklist.html" class="primary-button">
+                    <i class="fa-solid fa-shield-heart"></i>
+                    Start Preparing
+                 </a>
 
-                        <i class="fa-solid fa-shield-heart"></i>
-
-                        Start Preparing
-
-                    </button>
-
-
-                    <button class="secondary-button">
-
-                        <i class="fa-solid fa-triangle-exclamation"></i>
-
-                        Emergency Info
-
-                    </button>
+                 <!-- EMERGENCY INFO BUTTON -->
+                
+                 </button>
+                 <a href="emergency-info.html" class="secondary-button">
+                    <i class="fa-solid fa-shield-heart"></i>
+                    Emergency Info
+                 </a>
 
                 </div>
 
             </div>
 
-
-
             <!-- PREPAREDNESS STATUS -->
-
             <div class="preparedness-card">
 
                 <h3>Your Preparedness</h3>
@@ -140,92 +111,67 @@
                     Based on your completed activities
                 </p>
 
-
                 <div class="progress-container">
 
                     <div class="progress-circle">
 
                         <div class="progress-number">
-
-                            <strong id="progress">
-                                75%
-                            </strong>
-
+                            <strong id="progress">75%</strong>
                             <span>READY</span>
-
                         </div>
 
                     </div>
 
                 </div>
 
-
                 <div class="status">
-
                     <i class="fa-solid fa-circle-check"></i>
 
                     <span>
                         Good! Keep improving your preparedness.
                     </span>
-
                 </div>
 
             </div>
 
         </section>
 
-
-
-        <!-- =========================
-             QUICK ACCESS SECTION
-        ========================== -->
-
-        <section class="section quick-access-section">
+        <!-- QUICK ACCESS SECTION -->
+        <section id="quick-access" class="section quick-access-section">
 
             <div class="section-header">
 
                 <div>
-
                     <h2>Quick Access</h2>
 
                     <p>
                         Important tools for disaster preparedness
                     </p>
-
                 </div>
 
-                <a href="#" class="view-all">
-                    View All
-                </a>
+                <!-- VIEW ALL BUTTON REMOVED -->
 
             </div>
 
-
-
             <div class="quick-grid">
 
-
                 <!-- Disaster Guides -->
-
                 <a href="disaster-guides.html" class="quick-card">
 
                     <div class="quick-icon">
                         <i class="fa-solid fa-book-open"></i>
                     </div>
 
-                        <h3>Disaster Guides</h3>
+                    <h3>Disaster Guides</h3>
 
-                        <p>
-                            Learn what to do before, during,
-                            and after disasters.
-                        </p>
+                    <p>
+                        Learn what to do before, during,
+                        and after disasters.
+                    </p>
 
                 </a>
 
-
-
                 <!-- Emergency Checklist -->
-
                 <a href="emergency-checklist.html" class="quick-card">
 
                     <div class="quick-icon">
@@ -241,10 +187,7 @@
 
                 </a>
 
-
-
                 <!-- Family Emergency Plan -->
-
                 <div class="quick-card">
 
                     <div class="quick-icon">
@@ -260,10 +203,7 @@
 
                 </div>
 
-
-
                 <!-- Campus Evacuation Map -->
-
                 <div class="quick-card">
 
                     <div class="quick-icon">
@@ -279,10 +219,7 @@
 
                 </div>
 
-
-
                 <!-- Emergency Contacts -->
-
                 <a href="emergency-contacts.html" class="quick-card">
 
                     <div class="quick-icon">
@@ -291,18 +228,14 @@
 
                     <h3>Emergency Contacts</h3>
 
-                        <p>
+                    <p>
                         Quickly access important
                         emergency numbers.
                     </p>
 
-
                 </a>
 
-
-
                 <!-- Hazard Reporting -->
-
                 <div class="quick-card">
 
                     <div class="quick-icon">
@@ -318,10 +251,7 @@
 
                 </div>
 
-
-
                 <!-- First Aid Tutorials -->
-
                 <div class="quick-card">
 
                     <div class="quick-icon">
@@ -337,10 +267,7 @@
 
                 </div>
 
-
-
                 <!-- Emergency Go Bag -->
-
                 <div class="quick-card">
 
                     <div class="quick-icon">
@@ -356,54 +283,37 @@
 
                 </div>
 
-
             </div>
 
         </section>
 
-
-
-        <!-- =========================
-             SAFETY UPDATES
-        ========================== -->
-
+        <!-- SAFETY UPDATES -->
         <section class="section updates-section">
 
             <div class="section-header">
 
                 <div>
-
                     <h2>Safety Updates</h2>
 
                     <p>
                         Important information for the CCTC community
                     </p>
-
                 </div>
 
             </div>
 
-
-
             <div class="updates">
 
-
                 <!-- Update 1 -->
-
                 <div class="update-card">
 
                     <div class="update-icon">
-
                         <i class="fa-solid fa-bullhorn"></i>
-
                     </div>
-
 
                     <div class="update-content">
 
-                        <h3>
-                            Disaster Preparedness Reminder
-                        </h3>
+                        <h3>Disaster Preparedness Reminder</h3>
 
                         <p>
                             Make sure your emergency kit contains
@@ -419,24 +329,16 @@
 
                 </div>
 
-
-
                 <!-- Update 2 -->
-
                 <div class="update-card">
 
                     <div class="update-icon">
-
                         <i class="fa-solid fa-location-dot"></i>
-
                     </div>
-
 
                     <div class="update-content">
 
-                        <h3>
-                            Know Your Evacuation Area
-                        </h3>
+                        <h3>Know Your Evacuation Area</h3>
 
                         <p>
                             Familiarize yourself with designated
@@ -452,41 +354,25 @@
 
                 </div>
 
-
             </div>
 
         </section>
 
-
     </main>
 
-
-
-    <!-- =========================
-         FOOTER
-    ========================== -->
-
+    <!-- FOOTER -->
     <footer>
 
-        <h3>
-            CCTC Disaster Ready Portal
-        </h3>
+        <h3>CCTC Disaster Ready Portal</h3>
 
-        <p>
-            Prepared Today. Safe Tomorrow.
-        </p>
+        <p>Prepared Today. Safe Tomorrow.</p>
 
-        <p>
-            Consolatrix College of Toledo City
-        </p>
+        <p>Consolatrix College of Toledo City</p>
 
     </footer>
-
-
 
     <!-- JAVASCRIPT -->
     <script src="script.js"></script>
 
 </body>
-
 </html>

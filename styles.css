@@ -54,7 +54,6 @@ body {
     overflow-x: hidden;
 }
 
-
 /* =========================
    NAVIGATION BAR
 ========================= */
@@ -62,15 +61,15 @@ body {
 .navbar {
     width: 100%;
     padding: 20px 7%;
+    box-sizing: border-box;
 
     display: flex;
     align-items: center;
     justify-content: space-between;
+    gap: 90px;
 
     background: rgba(53, 23, 16, 0.85);
-
     backdrop-filter: blur(15px);
-
     border-bottom: 1px solid rgba(226, 211, 122, 0.2);
 
     position: sticky;
@@ -78,23 +77,25 @@ body {
     z-index: 100;
 }
 
+/* LOGO */
 
-/* Logo */
-
-.logo {
+.navbar .logo {
     display: flex;
     align-items: center;
     gap: 12px;
 
     font-size: 20px;
     font-weight: 800;
-
     color: var(--yellow);
+
+    white-space: nowrap;
+    flex-shrink: 0;
 }
 
-.logo-icon {
+.navbar .logo-icon {
     width: 42px;
     height: 42px;
+    flex-shrink: 0;
 
     display: flex;
     align-items: center;
@@ -108,60 +109,129 @@ body {
         var(--peach)
     );
 
-    box-shadow:
-        0 5px 20px
-        rgba(186, 27, 24, 0.4);
+    box-shadow: 0 5px 20px rgba(186, 27, 24, 0.4);
 }
 
+/* NAVIGATION LINKS */
 
-/* Navigation Links */
-
-.nav-links {
+.navbar .nav-links {
     display: flex;
     align-items: center;
-    gap: 35px;
+    justify-content: center;
+    gap: 30px;
+
+    /* Keep links together instead of spreading them */
+    margin-left: auto;
+    margin-right: 25px;
+
+    flex-shrink: 0;
 }
 
-.nav-links a {
+.navbar .nav-links a {
+    display: inline-flex;
+    align-items: center;
+
+    padding: 8px 0;
+
     color: rgba(255, 255, 255, 0.75);
     text-decoration: none;
 
     font-size: 14px;
     font-weight: 500;
+    line-height: 1.2;
 
-    transition: 0.3s;
+    white-space: nowrap;
+    transition: color 0.3s ease;
 }
 
-.nav-links a:hover,
-.nav-links a.active {
+.navbar .nav-links a:hover,
+.navbar .nav-links a.active {
     color: var(--yellow);
 }
 
-.nav-links a.active {
+.navbar .nav-links a.active {
     font-weight: 700;
 }
 
+/* PROFILE BUTTON */
 
-/* Profile Button */
-
-.profile-button {
+.navbar .profile-button {
     width: 40px;
     height: 40px;
+    min-width: 40px;
+    padding: 0;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
 
     border: none;
     border-radius: 50%;
 
     color: var(--dark-brown);
-
     background: var(--yellow);
 
+    text-decoration: none;
     cursor: pointer;
-    transition: 0.3s;
+    flex-shrink: 0;
+
+    transition: background 0.3s ease, transform 0.3s ease;
 }
 
-.profile-button:hover {
+.navbar .profile-button i {
+    font-size: 16px;
+    line-height: 1;
+}
+
+.navbar .profile-button:hover {
     background: var(--peach);
     transform: scale(1.05);
+}
+
+/* =========================
+   RESPONSIVE NAVBAR
+========================= */
+
+@media (max-width: 760px) {
+    .navbar {
+        flex-wrap: wrap;
+        justify-content: space-between;
+        gap: 12px;
+        padding: 14px 5%;
+    }
+
+    .navbar .logo {
+        font-size: 16px;
+    }
+
+    .navbar .logo-icon {
+        width: 36px;
+        height: 36px;
+    }
+
+    .navbar .profile-button {
+        margin-left: auto;
+    }
+
+    .navbar .nav-links {
+        order: 3;
+        width: 100%;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 22px;
+
+        margin: 0;
+    }
+}
+
+@media (max-width: 380px) {
+    .navbar .nav-links {
+        gap: 16px;
+    }
+
+    .navbar .nav-links a {
+        font-size: 13px;
+    }
 }
 
 
@@ -255,6 +325,14 @@ body {
     flex-wrap: wrap;
 }
 
+a.primary-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    text-decoration: none;
+}
+
 .primary-button,
 .secondary-button {
     border: none;
@@ -272,6 +350,8 @@ body {
     cursor: pointer;
 
     transition: 0.3s;
+
+    text-decoration: none;
 }
 
 .primary-button {
@@ -2253,6 +2333,863 @@ footer p {
     }
 
 }
+
+/* ========================================
+   ABOUT PAGE
+======================================== */
+
+/* About Hero */
+.about-hero {
+    position: relative;
+    overflow: hidden;
+    padding: 85px 7% 75px;
+    background:
+        radial-gradient(
+            circle at 85% 20%,
+            rgba(234, 136, 113, 0.22),
+            transparent 35%
+        ),
+        linear-gradient(
+            135deg,
+            rgba(186, 27, 24, 0.25),
+            rgba(53, 23, 16, 0.3)
+        );
+    border-bottom: 1px solid rgba(226, 211, 122, 0.15);
+}
+
+.about-hero-content {
+    max-width: 1050px;
+    margin: 0 auto;
+}
+
+.about-hero h1 {
+    max-width: 900px;
+    font-size: clamp(34px, 5vw, 58px);
+    line-height: 1.15;
+    font-weight: 800;
+    margin-bottom: 22px;
+    color: var(--white);
+}
+
+.about-hero h1 span {
+    color: var(--yellow);
+}
+
+.about-hero p {
+    max-width: 760px;
+    color: var(--light-text);
+    font-size: 16px;
+    line-height: 1.9;
+}
+
+/* Main About Content */
+.about-container {
+    width: min(1100px, 86%);
+    margin: 0 auto;
+    padding: 60px 0 75px;
+}
+
+/* Information Cards */
+.about-card {
+    display: flex;
+    align-items: flex-start;
+    gap: 25px;
+    padding: 32px;
+    margin-bottom: 25px;
+    border-radius: 20px;
+    background: rgba(255, 255, 255, 0.055);
+    border: 1px solid rgba(226, 211, 122, 0.18);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.12);
+    backdrop-filter: blur(12px);
+    transition: border-color 0.3s, transform 0.3s;
+}
+
+.about-card:hover {
+    border-color: rgba(234, 136, 113, 0.55);
+    transform: translateY(-3px);
+}
+
+.about-card.reverse-card {
+    flex-direction: row-reverse;
+}
+
+.about-card-icon {
+    flex: 0 0 64px;
+    width: 64px;
+    height: 64px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 17px;
+    color: var(--white);
+    background: linear-gradient(
+        135deg,
+        var(--primary-red),
+        var(--peach)
+    );
+    font-size: 26px;
+    box-shadow: 0 8px 22px rgba(186, 27, 24, 0.2);
+}
+
+.about-card-icon.purpose-icon {
+    color: var(--dark-brown);
+    background: linear-gradient(
+        135deg,
+        var(--yellow),
+        var(--peach)
+    );
+}
+
+.about-card-content {
+    flex: 1;
+    min-width: 0;
+}
+
+.about-label {
+    display: inline-block;
+    margin-bottom: 12px;
+    color: var(--peach);
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 2px;
+}
+
+.about-card-content h2 {
+    color: var(--yellow);
+    font-size: clamp(22px, 3vw, 29px);
+    line-height: 1.35;
+    margin-bottom: 17px;
+}
+
+.about-card-content p {
+    color: var(--light-text);
+    font-size: 14px;
+    line-height: 1.9;
+    margin-bottom: 13px;
+}
+
+.about-card-content p:last-child {
+    margin-bottom: 0;
+}
+
+/* Preparedness Resources Heading */
+.about-features {
+    padding: 45px 0 55px;
+}
+
+.about-section-heading {
+    text-align: center;
+    max-width: 700px;
+    margin: 0 auto 35px;
+}
+
+.about-section-heading > span {
+    display: inline-block;
+    color: var(--peach);
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 2px;
+    margin-bottom: 12px;
+}
+
+.about-section-heading h2 {
+    color: var(--yellow);
+    font-size: clamp(26px, 4vw, 36px);
+    margin-bottom: 14px;
+}
+
+.about-section-heading p {
+    color: var(--light-text);
+    font-size: 14px;
+    line-height: 1.8;
+}
+
+/* Resource Cards */
+.about-feature-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 22px;
+}
+
+.about-feature-card {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 28px;
+    min-width: 0;
+    border-radius: 18px;
+    background: rgba(53, 23, 16, 0.55);
+    border: 1px solid rgba(226, 211, 122, 0.18);
+    transition: transform 0.3s, border-color 0.3s,
+                background 0.3s;
+}
+
+.about-feature-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--peach);
+    background: rgba(53, 23, 16, 0.78);
+}
+
+.feature-icon {
+    width: 52px;
+    height: 52px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+    border-radius: 14px;
+    background: rgba(186, 27, 24, 0.22);
+    border: 1px solid rgba(234, 136, 113, 0.28);
+    color: var(--peach);
+    font-size: 22px;
+}
+
+.about-feature-card h3 {
+    color: var(--yellow);
+    font-size: 18px;
+    line-height: 1.4;
+    margin-bottom: 12px;
+}
+
+.about-feature-card p {
+    color: var(--light-text);
+    font-size: 13px;
+    line-height: 1.85;
+    margin-bottom: 22px;
+    flex: 1;
+}
+
+.about-feature-card a {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    color: var(--peach);
+    font-size: 13px;
+    font-weight: 700;
+    text-decoration: none;
+    transition: color 0.3s, gap 0.3s;
+}
+
+.about-feature-card a:hover {
+    color: var(--yellow);
+    gap: 13px;
+}
+
+/* CCTC Community */
+.community-card {
+    display: flex;
+    align-items: flex-start;
+    gap: 24px;
+    margin: 20px 0 30px;
+    padding: 32px;
+    border-radius: 20px;
+    background: linear-gradient(
+        120deg,
+        rgba(82, 96, 34, 0.45),
+        rgba(53, 23, 16, 0.65)
+    );
+    border: 1px solid rgba(226, 211, 122, 0.22);
+}
+
+.community-icon {
+    flex: 0 0 60px;
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 16px;
+    color: var(--dark-brown);
+    background: var(--yellow);
+    font-size: 25px;
+}
+
+.community-content > span {
+    display: inline-block;
+    margin-bottom: 10px;
+    color: var(--peach);
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 2px;
+}
+
+.community-content h2 {
+    color: var(--yellow);
+    font-size: clamp(22px, 3vw, 29px);
+    line-height: 1.4;
+    margin-bottom: 13px;
+}
+
+.community-content p {
+    color: var(--light-text);
+    font-size: 14px;
+    line-height: 1.9;
+}
+
+/* Call to Action */
+.about-cta {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 25px;
+    margin-top: 35px;
+    padding: 32px;
+    border-radius: 20px;
+    background: linear-gradient(
+        115deg,
+        var(--primary-red),
+        #7c2119
+    );
+    border: 1px solid rgba(234, 136, 113, 0.45);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.16);
+}
+
+.about-cta h2 {
+    color: var(--white);
+    font-size: clamp(22px, 3vw, 29px);
+    margin-bottom: 10px;
+}
+
+.about-cta p {
+    color: rgba(255, 255, 255, 0.82);
+    font-size: 13px;
+    line-height: 1.8;
+}
+
+.about-cta-button {
+    flex-shrink: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 14px 20px;
+    border-radius: 12px;
+    color: var(--dark-brown);
+    background: var(--yellow);
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 800;
+    transition: transform 0.3s, background 0.3s;
+}
+
+.about-cta-button:hover {
+    background: var(--peach);
+    transform: translateY(-3px);
+}
+
+/* About Page Responsive Layout */
+@media (max-width: 768px) {
+    .about-hero {
+        padding: 60px 6% 50px;
+    }
+
+    .about-hero p {
+        font-size: 14px;
+    }
+
+    .about-container {
+        width: 88%;
+        padding: 40px 0 55px;
+    }
+
+    .about-card,
+    .about-card.reverse-card {
+        flex-direction: column;
+        gap: 20px;
+        padding: 24px;
+    }
+
+    .about-card-icon {
+        width: 56px;
+        height: 56px;
+        flex-basis: 56px;
+        font-size: 23px;
+    }
+
+    .about-features {
+        padding: 30px 0 40px;
+    }
+
+    .about-feature-grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+
+    .about-feature-card {
+        padding: 24px;
+    }
+
+    .community-card {
+        flex-direction: column;
+        gap: 20px;
+        padding: 25px;
+    }
+
+    .about-cta {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 25px;
+    }
+
+    .about-cta-button {
+        width: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    .about-hero {
+        padding: 45px 5% 40px;
+    }
+
+    .about-container {
+        width: 90%;
+    }
+
+    .about-card,
+    .about-feature-card,
+    .community-card {
+        padding: 20px;
+    }
+
+    .about-card-content h2 {
+        font-size: 22px;
+    }
+
+    .about-section-heading h2 {
+        font-size: 27px;
+    }
+
+    .about-cta h2 {
+        font-size: 23px;
+    }
+}
+
+/* =========================================
+   EMERGENCY INFORMATION PAGE
+   CCTC DISASTER READY PORTAL
+========================================= */
+
+/* HERO SECTION */
+
+.earthquake-hero {
+    width: 88%;
+    margin: 0 auto;
+    padding: 80px 7% 85px;
+
+    background: linear-gradient(
+        115deg,
+        rgba(104, 43, 30, 0.45),
+        rgba(91, 28, 22, 0.30)
+    );
+
+    border-bottom: 1px solid rgba(226, 211, 122, 0.20);
+}
+
+.earthquake-hero-content {
+    max-width: 850px;
+    margin: 0 auto;
+}
+
+.hero-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+
+    padding: 10px 16px;
+    margin-bottom: 22px;
+
+    color: var(--peach);
+    background: rgba(186, 27, 24, 0.12);
+
+    border: 1px solid rgba(240, 126, 103, 0.35);
+    border-radius: 30px;
+
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 1px;
+}
+
+.earthquake-hero h1,
+.earthquake-hero-content h1 {
+    margin: 0 0 22px;
+
+    color: #fff;
+    font-size: clamp(38px, 5vw, 62px);
+    font-weight: 800;
+    line-height: 1.12;
+}
+
+.earthquake-hero p,
+.earthquake-hero-content p {
+    max-width: 720px;
+    margin: 0;
+
+    color: rgba(255, 255, 255, 0.82);
+    font-size: 16px;
+    line-height: 1.9;
+}
+
+
+/* GENERAL SAFETY SECTIONS */
+
+.safety-section {
+    width: 100%;
+    padding: 75px 7%;
+    box-sizing: border-box;
+}
+
+.section-heading {
+    max-width: 850px;
+    margin: 0 auto 45px;
+    text-align: center;
+}
+
+.section-label {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 9px;
+
+    margin-bottom: 16px;
+
+    color: var(--peach);
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 1.5px;
+}
+
+.section-heading h2 {
+    margin: 0 0 18px;
+
+    color: var(--yellow);
+    font-size: clamp(27px, 3vw, 36px);
+    font-weight: 800;
+    line-height: 1.3;
+}
+
+.section-heading p {
+    max-width: 750px;
+    margin: 0 auto;
+
+    color: rgba(255, 255, 255, 0.78);
+    font-size: 15px;
+    line-height: 1.9;
+}
+
+
+/* SAFETY CARDS GRID */
+
+.safety-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 24px;
+
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.safety-card {
+    min-width: 0;
+    padding: 30px 26px;
+
+    background: rgba(53, 23, 16, 0.55);
+    border: 1px solid rgba(226, 211, 122, 0.17);
+    border-radius: 22px;
+
+    box-sizing: border-box;
+
+    transition:
+        transform 0.3s ease,
+        border-color 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+.safety-card:hover {
+    transform: translateY(-5px);
+
+    border-color: rgba(226, 211, 122, 0.45);
+
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.12);
+}
+
+
+/* CARD ICON */
+
+.safety-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 64px;
+    height: 64px;
+    margin-bottom: 24px;
+
+    color: var(--yellow);
+    background: rgba(226, 211, 122, 0.13);
+
+    border: 1px solid rgba(226, 211, 122, 0.15);
+    border-radius: 17px;
+
+    font-size: 25px;
+}
+
+
+/* CARD HEADINGS */
+
+.safety-card h3 {
+    margin: 0 0 16px;
+
+    color: var(--yellow);
+    font-size: 20px;
+    font-weight: 800;
+    line-height: 1.4;
+}
+
+
+/* CARD PARAGRAPHS */
+
+.safety-card p {
+    margin: 0;
+
+    color: rgba(255, 255, 255, 0.78);
+    font-size: 14px;
+    line-height: 1.9;
+}
+
+
+/* CARD LISTS */
+
+.safety-card ul {
+    margin: 0;
+    padding-left: 20px;
+
+    color: rgba(255, 255, 255, 0.78);
+    font-size: 14px;
+    line-height: 1.9;
+}
+
+.safety-card li {
+    padding-left: 4px;
+    margin-bottom: 10px;
+}
+
+.safety-card li:last-child {
+    margin-bottom: 0;
+}
+
+.safety-card li::marker {
+    color: var(--peach);
+}
+
+
+/* ALTERNATING SECTION BACKGROUNDS */
+
+.safety-section:nth-of-type(even) {
+    background: rgba(53, 23, 16, 0.18);
+}
+
+
+/* CCTC REMINDER */
+
+.cctc-reminder {
+    width: 86%;
+    max-width: 1200px;
+
+    margin: 20px auto 40px;
+    padding: 32px 36px;
+
+    background: rgba(226, 211, 122, 0.10);
+    border: 1px solid rgba(226, 211, 122, 0.25);
+    border-radius: 22px;
+
+    box-sizing: border-box;
+}
+
+.cctc-reminder-content {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+}
+
+.cctc-reminder-content > i {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    flex-shrink: 0;
+
+    width: 64px;
+    height: 64px;
+
+    color: var(--yellow);
+    background: rgba(186, 27, 24, 0.25);
+
+    border-radius: 18px;
+    font-size: 28px;
+}
+
+.cctc-reminder h2 {
+    margin: 0 0 10px;
+
+    color: var(--yellow);
+    font-size: 23px;
+    font-weight: 800;
+}
+
+.cctc-reminder p {
+    margin: 0;
+
+    color: rgba(255, 255, 255, 0.80);
+    font-size: 14px;
+    line-height: 1.9;
+}
+
+
+/* BOTTOM BUTTONS */
+
+.back-section {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 16px;
+
+    padding: 20px 7% 70px;
+}
+
+.back-section .btn-primary,
+.back-section .back-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+
+    min-height: 48px;
+    padding: 14px 24px;
+
+    border-radius: 12px;
+
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: 700;
+
+    text-decoration: none;
+
+    transition:
+        transform 0.3s ease,
+        background 0.3s ease;
+}
+
+.back-section .btn-primary:hover,
+.back-section .back-button:hover {
+    transform: translateY(-2px);
+}
+
+.back-section .back-button {
+    color: var(--yellow);
+    background: rgba(255, 255, 255, 0.04);
+
+    border: 1px solid rgba(226, 211, 122, 0.30);
+}
+
+
+/* RESPONSIVE TABLET LAYOUT */
+
+@media (max-width: 1000px) {
+
+    .safety-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .earthquake-hero {
+        padding: 65px 6%;
+    }
+
+    .safety-section {
+        padding: 60px 5%;
+    }
+
+    .cctc-reminder {
+        width: 90%;
+    }
+
+}
+
+
+/* RESPONSIVE MOBILE LAYOUT */
+
+@media (max-width: 650px) {
+
+    .earthquake-hero {
+        width: 100%;
+        padding: 50px 6%;
+        box-sizing: border-box;
+    }
+
+    .earthquake-hero h1,
+    .earthquake-hero-content h1 {
+        font-size: 38px;
+    }
+
+    .earthquake-hero p,
+    .earthquake-hero-content p {
+        font-size: 14px;
+    }
+
+    .safety-section {
+        padding: 45px 5%;
+    }
+
+    .section-heading {
+        margin-bottom: 30px;
+    }
+
+    .section-heading h2 {
+        font-size: 27px;
+    }
+
+    .safety-grid {
+        grid-template-columns: 1fr;
+        gap: 18px;
+    }
+
+    .safety-card {
+        padding: 25px 22px;
+    }
+
+    .cctc-reminder {
+        width: 90%;
+        padding: 25px 20px;
+    }
+
+    .cctc-reminder-content {
+        align-items: flex-start;
+        gap: 16px;
+    }
+
+    .cctc-reminder-content > i {
+        width: 48px;
+        height: 48px;
+        font-size: 22px;
+    }
+
+    .cctc-reminder h2 {
+        font-size: 20px;
+    }
+
+    .back-section {
+        padding: 15px 5% 45px;
+    }
+
+    .back-section .btn-primary,
+    .back-section .back-button {
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+}
+
 /* =========================
    ACCOUNT / PROFILE PAGES
 ========================= */
