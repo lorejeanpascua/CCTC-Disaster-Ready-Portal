@@ -57,28 +57,33 @@ if (emergencyButton) {
 }
 
 
+
+
 /* =========================
    PROFILE BUTTON
 ========================= */
 
-const profileButton = document.querySelector(".profile-button");
+document.querySelectorAll(".profile-button").forEach(function (button) {
+    button.addEventListener("click", function () {
+        let currentUser = null;
 
-if (profileButton) {
-
-    profileButton.addEventListener("click", function () {
-
-        const currentUser =
-            JSON.parse(localStorage.getItem("cctcCurrentUser"));
-
-        if (currentUser) {
-            window.location.href = "profile.html";
-        } else {
-            window.location.href = "auth.html";
+        try {
+            currentUser = JSON.parse(
+                localStorage.getItem("cctcCurrentUser")
+            );
+        } catch (error) {
+            currentUser = null;
         }
 
+        if (currentUser && currentUser.email) {
+            window.location.assign("profile.html");
+        } else {
+            window.location.assign("auth.html");
+        }
     });
+});
 
-}
+
 
 
 /* =========================
@@ -217,49 +222,82 @@ navLinks.forEach(function (link) {
    PREPAREDNESS PROGRESS
 ========================= */
 
-const progressText = document.getElementById("progress");
-
-if (progressText) {
-
-    let progress = localStorage.getItem(
-        "preparednessProgress"
-    );
-
-    if (progress === null) {
-
-        progress = 75;
-
-    } else {
-
-        progress = parseInt(progress);
-
-        if (isNaN(progress)) {
-
-            progress = 75;
-
-        }
-
+function getProgressUser() {
+    try {
+        return JSON.parse(localStorage.getItem("cctcCurrentUser"));
+    } catch {
+        return null;
     }
-
-    progressText.textContent =
-        progress + "%";
-
-
-    function updateProgress(newProgress) {
-
-        localStorage.setItem(
-            "preparednessProgress",
-            newProgress
-        );
-
-        progressText.textContent =
-            newProgress + "%";
-
-    }
-
 }
 
+function getProgressKey() {
+    const user = getProgressUser();
 
+    return user
+        ? "cctcProgress_" + (user.id || user.email)
+        : "cctcGuestProgress";
+}
+
+function getProgressData() {
+    const key = getProgressKey();
+    const user = getProgressUser();
+    const storage = user ? localStorage : sessionStorage;
+
+    try {
+        return JSON.parse(storage.getItem(key)) || {
+            checklist: {},
+            goBag: {}
+        };
+    } catch {
+        return { checklist: {}, goBag: {} };
+    }
+}
+
+function saveProgressData(data) {
+    const key = getProgressKey();
+    const user = getProgressUser();
+    const storage = user ? localStorage : sessionStorage;
+
+    storage.setItem(key, JSON.stringify(data));
+    updateOverallProgress();
+}
+
+function updateOverallProgress() {
+    const data = getProgressData();
+
+    const checklistTotal = 26;
+    const goBagTotal = 12;
+
+    const checklistDone = Object.values(data.checklist)
+        .filter(Boolean).length;
+
+    const goBagDone = Object.values(data.goBag)
+        .filter(Boolean).length;
+
+    const total = checklistTotal + goBagTotal;
+    const completed = checklistDone + goBagDone;
+    const percentage = Math.round((completed / total) * 100);
+
+    const homeProgress = document.getElementById("progress");
+    const checklistProgress = document.getElementById("checklistProgress");
+    const checklistFill = document.getElementById("progressFill");
+    const profileProgress = document.getElementById("profileProgress");
+    const profileValue = document.getElementById("profileProgressValue");
+    const profileBar = document.getElementById("profileProgressBar");
+
+    if (homeProgress) homeProgress.textContent = percentage + "%";
+    if (checklistProgress) checklistProgress.textContent = percentage + "%";
+    if (checklistFill) checklistFill.style.width = percentage + "%";
+    if (profileProgress) profileProgress.textContent = percentage + "%";
+    if (profileValue) profileValue.textContent = percentage + "%";
+    if (profileBar) profileBar.style.width = percentage + "%";
+}
+
+updateOverallProgress();
+
+
+
+    
 /* =========================
    GENERAL PAGE READY MESSAGE
 ========================= */
@@ -388,155 +426,82 @@ if (submitHazardReport) {
     );
 
 }
+
 /* =========================
    EMERGENCY GO BAG
 ========================= */
 
-const goBagCheckboxes =
-    document.querySelectorAll(".go-bag-checkbox");
+const goBagCheckboxes = document.querySelectorAll(".go-bag-checkbox");
+const goBagProgress = document.getElementById("goBagProgress");
+const clearGoBag = document.getElementById("clearGoBag");
+const goBagMessage = document.getElementById("goBagMessage");
 
-const goBagProgress =
-    document.getElementById("goBagProgress");
+if (goBagCheckboxes.length > 0 && goBagProgress) {
+    const user = getProgressUser();
+    const storage = user ? localStorage : sessionStorage;
+    const key = getProgressKey();
 
-const clearGoBag =
-    document.getElementById("clearGoBag");
+    function loadData() {
+        try {
+            return JSON.parse(storage.getItem(key)) || {
+                checklist: {},
+                goBag: {}
+            };
+        } catch {
+            return { checklist: {}, goBag: {} };
+        }
+    }
 
-const goBagMessage =
-    document.getElementById("goBagMessage");
-
-
-if (
-    goBagCheckboxes.length > 0 &&
-    goBagProgress
-) {
-
-    const savedGoBag =
-        JSON.parse(
-            localStorage.getItem("emergencyGoBag")
-        ) || {};
-
-
-    function updateGoBagProgress() {
-
-        let checkedItems = 0;
-
+    function updateGoBag() {
+        const data = loadData();
+        let completed = 0;
 
         goBagCheckboxes.forEach(function (checkbox) {
+            const item = checkbox.dataset.item;
+            data.goBag[item] = checkbox.checked;
 
-            if (checkbox.checked) {
-
-                checkedItems++;
-
-            }
-
+            if (checkbox.checked) completed++;
         });
 
-
-        const totalItems =
-            goBagCheckboxes.length;
-
-
-        const percentage =
-            Math.round(
-                (checkedItems / totalItems) * 100
-            );
-
+        storage.setItem(key, JSON.stringify(data));
 
         goBagProgress.textContent =
-            percentage + "%";
+            Math.round(completed / goBagCheckboxes.length * 100) + "%";
 
-
-        localStorage.setItem(
-            "emergencyGoBag",
-            JSON.stringify(
-                Array.from(goBagCheckboxes).reduce(
-                    function (items, checkbox) {
-
-                        items[checkbox.dataset.item] =
-                            checkbox.checked;
-
-                        return items;
-
-                    },
-                    {}
-                )
-            )
-        );
-
+        updateOverallProgress();
     }
 
+    const savedData = loadData();
 
     goBagCheckboxes.forEach(function (checkbox) {
+        checkbox.checked = Boolean(savedData.goBag[checkbox.dataset.item]);
 
-        const item =
-            checkbox.dataset.item;
+        checkbox.addEventListener("change", function () {
+            updateGoBag();
 
-
-        if (savedGoBag[item]) {
-
-            checkbox.checked = true;
-
-        }
-
-
-        checkbox.addEventListener(
-            "change",
-            function () {
-
-                updateGoBagProgress();
-
-                if (goBagMessage) {
-
-                    goBagMessage.textContent =
-                        "Checklist progress saved.";
-
-                }
-
+            if (goBagMessage) {
+                goBagMessage.textContent = "Checklist progress updated.";
             }
-        );
-
+        });
     });
 
-
-    updateGoBagProgress();
-
+    updateGoBag();
 
     if (clearGoBag) {
+        clearGoBag.addEventListener("click", function () {
+            goBagCheckboxes.forEach(function (checkbox) {
+                checkbox.checked = false;
+            });
 
-        clearGoBag.addEventListener(
-            "click",
-            function () {
+            updateGoBag();
 
-                goBagCheckboxes.forEach(
-                    function (checkbox) {
-
-                        checkbox.checked = false;
-
-                    }
-                );
-
-
-                localStorage.removeItem(
-                    "emergencyGoBag"
-                );
-
-
-                updateGoBagProgress();
-
-
-                if (goBagMessage) {
-
-                    goBagMessage.textContent =
-                        "Go bag checklist has been reset.";
-
-                }
-
+            if (goBagMessage) {
+                goBagMessage.textContent = "Go bag checklist has been reset.";
             }
-        );
-
+        });
     }
-
 }
+
 /* =========================
    LOGIN / SIGNUP
 ========================= */
@@ -641,11 +606,12 @@ if (authForm) {
         }
 
         localStorage.setItem("cctcCurrentUser", JSON.stringify(user));
-        window.location.href = "profile.html";
+        window.location.replace("profile.html");
     });
 
     setAuthMode("login");
 }
+
 
 
 /* =========================
@@ -655,18 +621,19 @@ if (authForm) {
 const profilePage = document.getElementById("profilePage");
 
 if (profilePage) {
-
-    const currentUser =
-        JSON.parse(localStorage.getItem("cctcCurrentUser"));
+    const currentUser = JSON.parse(
+        localStorage.getItem("cctcCurrentUser")
+    );
 
     if (!currentUser) {
-
         window.location.href = "auth.html";
-
     } else {
+        document.getElementById("profileName").textContent =
+            currentUser.name;
 
-        document.getElementById("profileName").textContent = currentUser.name;
-        document.getElementById("profileEmail").textContent = currentUser.email;
+        document.getElementById("profileEmail").textContent =
+            currentUser.email;
+
         document.getElementById("profileInitial").textContent =
             currentUser.name.charAt(0).toUpperCase();
 
@@ -679,28 +646,43 @@ if (profilePage) {
                 year: "numeric"
             });
 
-        const progress =
-            parseInt(localStorage.getItem("preparednessProgress")) || 75;
+        // Get progress for the currently logged-in account.
+        const progressData = getProgressData();
+
+        const checklistDone = Object.values(
+            progressData.checklist || {}
+        ).filter(Boolean).length;
+
+        const goBagDone = Object.values(
+            progressData.goBag || {}
+        ).filter(Boolean).length;
+
+        const totalActivities = 38;
+
+        const progress = Math.round(
+            ((checklistDone + goBagDone) / totalActivities) * 100
+        );
 
         document.getElementById("profileProgress").textContent =
             progress + "%";
+
         document.getElementById("profileProgressValue").textContent =
             progress + "%";
+
         document.getElementById("profileProgressBar").style.width =
             progress + "%";
 
-        const goBag =
-            JSON.parse(localStorage.getItem("emergencyGoBag")) || {};
-
-        const completedGoBag =
-            Object.values(goBag).filter(Boolean).length;
-
+        // Count completed Go Bag items.
         document.getElementById("goBagCount").textContent =
-            completedGoBag;
+            goBagDone;
 
-        document.getElementById("logoutButton").addEventListener("click", function () {
-            localStorage.removeItem("cctcCurrentUser");
-            window.location.href = "index.html";
-        });
+        // Log out.
+        document.getElementById("logoutButton").addEventListener(
+            "click",
+            function () {
+                localStorage.removeItem("cctcCurrentUser");
+                window.location.href = "index.html";
+            }
+        );
     }
 }

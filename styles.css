@@ -454,9 +454,9 @@ a.primary-button {
             transparent 59%
         ),
         conic-gradient(
-            var(--yellow) 0deg 270deg,
-            rgba(255, 255, 255, 0.15) 270deg 360deg
-        );
+    var(--yellow) 0deg var(--progress-degrees, 0deg),
+    rgba(255, 255, 255, 0.15) var(--progress-degrees, 0deg) 360deg
+);
 
     box-shadow:
         0 0 35px

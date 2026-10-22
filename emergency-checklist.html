@@ -1019,96 +1019,76 @@
 </footer>
 
 
-
-<!-- =========================
-     CHECKLIST JAVASCRIPT
-========================= -->
-
 <script>
+(function () {
+    const checkboxes = document.querySelectorAll(".check-item input");
+    const progressText = document.getElementById("checklistProgress");
+    const progressFill = document.getElementById("progressFill");
 
-    const checkboxes =
-        document.querySelectorAll(".check-item input");
-
-    const progressText =
-        document.getElementById("checklistProgress");
-
-    const progressFill =
-        document.getElementById("progressFill");
-
-
-    function updateChecklistProgress() {
-
-        const total =
-            checkboxes.length;
-
-        let completed = 0;
-
-
-        checkboxes.forEach(function (checkbox) {
-
-            if (checkbox.checked) {
-
-                completed++;
-
-            }
-
-        });
-
-
-        const percentage =
-            Math.round((completed / total) * 100);
-
-
-        progressText.textContent =
-            percentage + "%";
-
-
-        progressFill.style.width =
-            percentage + "%";
-
-
-        localStorage.setItem(
-            "checklistProgress",
-            percentage
-        );
-
+    function getUser() {
+        try {
+            return JSON.parse(localStorage.getItem("cctcCurrentUser"));
+        } catch {
+            return null;
+        }
     }
 
+    function getKey() {
+        const user = getUser();
+        return user
+            ? "cctcProgress_" + (user.id || user.email)
+            : "cctcGuestProgress";
+    }
+
+    function getStorage() {
+        return getUser() ? localStorage : sessionStorage;
+    }
+
+    function readData() {
+        try {
+            return JSON.parse(getStorage().getItem(getKey())) || {
+                checklist: {},
+                goBag: {}
+            };
+        } catch {
+            return { checklist: {}, goBag: {} };
+        }
+    }
+
+    function saveData(data) {
+        getStorage().setItem(getKey(), JSON.stringify(data));
+    }
+
+    function updateProgress() {
+        const data = readData();
+        const total = 38;
+
+        const checklistDone = Object.values(data.checklist).filter(Boolean).length;
+        const goBagDone = Object.values(data.goBag).filter(Boolean).length;
+        const percentage = Math.round((checklistDone + goBagDone) / total * 100);
+
+        if (progressText) progressText.textContent = percentage + "%";
+        if (progressFill) progressFill.style.width = percentage + "%";
+
+        saveData(data);
+    }
+
+    const data = readData();
 
     checkboxes.forEach(function (checkbox, index) {
+        const itemKey = "item" + index;
+        checkbox.checked = Boolean(data.checklist[itemKey]);
 
-        const saved =
-            localStorage.getItem(
-                "check-" + index
-            );
-
-
-        if (saved === "true") {
-
-            checkbox.checked = true;
-
-        }
-
-
-        checkbox.addEventListener(
-            "change",
-            function () {
-
-                localStorage.setItem(
-                    "check-" + index,
-                    checkbox.checked
-                );
-
-                updateChecklistProgress();
-
-            }
-        );
-
+        checkbox.addEventListener("change", function () {
+            const latest = readData();
+            latest.checklist[itemKey] = checkbox.checked;
+            saveData(latest);
+            updateProgress();
+        });
     });
 
-
-    updateChecklistProgress();
-
+    updateProgress();
+})();
 </script>
 
 
