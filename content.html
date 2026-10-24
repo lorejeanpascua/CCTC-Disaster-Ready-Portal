@@ -1,361 +1,522 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Disaster Guides | CCTC Disaster Ready</title>
+    <title>Content | CCTC Disaster Ready Portal</title>
 
-    <!-- Google Font -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-    <!-- Font Awesome -->
-    <link rel="stylesheet"
-          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet"
+    >
 
-    <!-- Main CSS -->
+    <!-- Font Awesome Icons -->
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    >
+
+    <!-- Main Stylesheet -->
     <link rel="stylesheet" href="styles.css">
+
+    <!-- Content Page Styles -->
+    <style>
+        .content-page-hero {
+            padding: 65px 7% 35px;
+            text-align: center;
+        }
+
+        .content-page-label {
+            display: inline-block;
+            margin-bottom: 15px;
+            color: var(--peach);
+            font-size: 11px;
+            font-weight: 800;
+            letter-spacing: 3px;
+        }
+
+        .content-page-hero h1 {
+            margin-bottom: 15px;
+            color: var(--yellow);
+            font-size: clamp(32px, 4vw, 46px);
+        }
+
+        .content-page-hero p {
+            max-width: 650px;
+            margin: 0 auto;
+            color: rgba(255, 255, 255, 0.75);
+            font-size: 14px;
+            line-height: 1.8;
+        }
+
+        .content-library {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 25px 7% 75px;
+        }
+
+        .content-library-header {
+            margin-bottom: 28px;
+        }
+
+        .content-library-header h2 {
+            margin-bottom: 8px;
+            color: var(--yellow);
+            font-size: 25px;
+        }
+
+        .content-library-header p {
+            color: rgba(255, 255, 255, 0.65);
+            font-size: 13px;
+            line-height: 1.7;
+        }
+
+        .content-library-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 20px;
+        }
+
+        .content-library-card {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            min-width: 0;
+            padding: 25px;
+            border: 1px solid rgba(234, 136, 113, 0.2);
+            border-radius: 20px;
+            background: rgba(53, 23, 16, 0.55);
+            text-decoration: none;
+            transition: transform 0.25s ease,
+                        background 0.25s ease,
+                        border-color 0.25s ease;
+        }
+
+        .content-library-card:hover {
+            transform: translateY(-5px);
+            background: rgba(82, 96, 34, 0.65);
+            border-color: var(--yellow);
+        }
+
+        .content-library-icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 54px;
+            height: 54px;
+            margin-bottom: 18px;
+            border-radius: 15px;
+            background: linear-gradient(
+                135deg,
+                var(--primary-red),
+                var(--peach)
+            );
+            color: var(--yellow);
+            font-size: 22px;
+        }
+
+        .content-library-card h3 {
+            margin-bottom: 10px;
+            color: var(--yellow);
+            font-size: 17px;
+        }
+
+        .content-library-card p {
+            margin-bottom: 22px;
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 13px;
+            line-height: 1.7;
+        }
+
+        .content-library-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 9px;
+            margin-top: auto;
+            padding: 10px 15px;
+            border-radius: 8px;
+            background: var(--primary-red);
+            color: white;
+            font-size: 12px;
+            font-weight: 700;
+        }
+
+        .content-library-card:hover .content-library-button {
+            background: var(--peach);
+            color: #351710;
+        }
+
+        .content-page-reminder {
+            max-width: 1200px;
+            margin: 0 auto 65px;
+            padding: 0 7%;
+        }
+
+        .content-page-reminder-inner {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            padding: 25px;
+            border: 1px solid rgba(234, 136, 113, 0.2);
+            border-radius: 18px;
+            background: rgba(53, 23, 16, 0.55);
+        }
+
+        .content-page-reminder-icon {
+            display: flex;
+            flex-shrink: 0;
+            align-items: center;
+            justify-content: center;
+            width: 52px;
+            height: 52px;
+            border-radius: 14px;
+            background: var(--primary-red);
+            color: var(--yellow);
+            font-size: 22px;
+        }
+
+        .content-page-reminder h2 {
+            margin-bottom: 7px;
+            color: var(--yellow);
+            font-size: 18px;
+        }
+
+        .content-page-reminder p {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 13px;
+            line-height: 1.7;
+        }
+
+        @media (max-width: 900px) {
+            .content-library-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+        }
+
+        @media (max-width: 600px) {
+            .content-page-hero {
+                padding-top: 45px;
+            }
+
+            .content-library-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .content-page-reminder-inner {
+                align-items: flex-start;
+                padding: 20px;
+            }
+        }
+    </style>
 </head>
 
 <body>
 
-<!-- =========================
-     NAVBAR
-========================= -->
-<nav class="navbar">
+    <!-- NAVIGATION BAR -->
+    <nav class="navbar">
 
-    <div class="logo">
-        <i class="fa-solid fa-shield-heart"></i>
-        <span>CCTC Disaster Ready</span>
-    </div>
-
-    <div class="nav-links">
-        <a href="index.html">Home</a>
-        <a href="disaster-guides.html" class="active">Content</a>
-        <a href="about.html">About</a>
-    </div>
-
-    <a href="profile.html" class="profile-button" title="Profile">
-        <i class="fa-solid fa-user"></i>
-    </a>
-
-</nav>
-
-
-<!-- =========================
-     HERO SECTION
-========================= -->
-<section class="disaster-content-hero">
-
-    <div class="disaster-content-hero-content">
-
-        <span class="hero-label">
-            <i class="fa-solid fa-book-open"></i>
-            DISASTER PREPAREDNESS
-        </span>
-
-        <h1>
-            Disaster Guides
-        </h1>
-
-        <p>
-            Learn what to do before, during, and after different
-            types of disasters. Stay informed, stay prepared,
-            and help keep the CCTC community safe.
-        </p>
-
-    </div>
-
-</section>
-
-
-<!-- =========================
-     INTRODUCTION
-========================= -->
-<section class="content-intro">
-
-    <span class="section-label">
-        <i class="fa-solid fa-circle-info"></i>
-        KNOW WHAT TO DO
-    </span>
-
-    <h2>
-        Prepare Before Disaster Strikes
-    </h2>
-
-    <p>
-        Emergencies can happen without warning. Knowing the proper
-        safety procedures can help you stay calm, make better
-        decisions, and protect yourself and others.
-    </p>
-
-</section>
-
-
-<!-- =========================
-     DISASTER GUIDE CARDS
-========================= -->
-<section class="disaster-guides-section">
-
-    <div class="guide-grid">
-
-        <!-- EARTHQUAKE -->
-        <div class="guide-card">
-
-            <div class="guide-icon">
-                <i class="fa-solid fa-house-crack"></i>
+        <a href="index.html" class="logo" style="text-decoration: none;">
+            <div class="logo-icon">
+                <i class="fa-solid fa-shield-halved"></i>
             </div>
 
-            <span class="guide-type">
-                EARTHQUAKE
-            </span>
-
-            <h3>
-                Earthquake Safety
-            </h3>
-
-            <p>
-                Learn how to prepare for earthquakes and what to
-                do during and after strong shaking.
-            </p>
-
-            <a href="earthquake.html" class="guide-button">
-                View Guide
-                <i class="fa-solid fa-arrow-right"></i>
-            </a>
-
-        </div>
-
-
-        <!-- FLOOD -->
-        <div class="guide-card">
-
-            <div class="guide-icon">
-                <i class="fa-solid fa-water"></i>
-            </div>
-
-            <span class="guide-type">
-                FLOOD
-            </span>
-
-            <h3>
-                Flood Safety
-            </h3>
-
-            <p>
-                Know the warning signs of flooding and learn how
-                to stay safe before, during, and after a flood.
-            </p>
-
-            <a href="flood.html" class="guide-button">
-                View Guide
-                <i class="fa-solid fa-arrow-right"></i>
-            </a>
-
-        </div>
-
-
-        <!-- LANDSLIDE -->
-        <div class="guide-card">
-
-            <div class="guide-icon">
-                <i class="fa-solid fa-mountain"></i>
-            </div>
-
-            <span class="guide-type">
-                LANDSLIDE
-            </span>
-
-            <h3>
-                Landslide Safety
-            </h3>
-
-            <p>
-                Learn about landslide warning signs and the safety
-                actions to take before, during, and after a landslide.
-            </p>
-
-            <a href="landslide.html" class="guide-button">
-                View Guide
-                <i class="fa-solid fa-arrow-right"></i>
-            </a>
-
-        </div>
-
-
-        <!-- TYPHOON -->
-        <div class="guide-card">
-
-            <div class="guide-icon">
-                <i class="fa-solid fa-cloud-showers-heavy"></i>
-            </div>
-
-            <span class="guide-type">
-                TYPHOON
-            </span>
-
-            <h3>
-                Typhoon Safety
-            </h3>
-
-            <p>
-                Prepare your home and yourself for strong winds,
-                heavy rain, flooding, and other typhoon hazards.
-            </p>
-
-            <a href="typhoon.html" class="guide-button">
-                View Guide
-                <i class="fa-solid fa-arrow-right"></i>
-            </a>
-
-        </div>
-
-
-        <!-- FIRE -->
-        <div class="guide-card">
-
-            <div class="guide-icon">
-                <i class="fa-solid fa-fire"></i>
-            </div>
-
-            <span class="guide-type">
-                FIRE
-            </span>
-
-            <h3>
-                Fire Safety
-            </h3>
-
-            <p>
-                Learn how to prevent fires and what actions to take
-                when a fire emergency happens.
-            </p>
-
-            <a href="fire.html" class="guide-button">
-                View Guide
-                <i class="fa-solid fa-arrow-right"></i>
-            </a>
-
-        </div>
-
-
-        <!-- TSUNAMI -->
-        <div class="guide-card">
-
-            <div class="guide-icon">
-                <i class="fa-solid fa-house-flood-water"></i>
-            </div>
-
-            <span class="guide-type">
-                TSUNAMI
-            </span>
-
-            <h3>
-                Tsunami Safety
-            </h3>
-
-            <p>
-                Understand tsunami warning signs and learn when
-                and where to evacuate to safer areas.
-            </p>
-
-            <a href="tsunami.html" class="guide-button">
-                View Guide
-                <i class="fa-solid fa-arrow-right"></i>
-            </a>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- =========================
-     EMERGENCY CHECKLIST
-========================= -->
-<section class="content-emergency">
-
-    <div class="content-emergency-icon">
-        <i class="fa-solid fa-kit-medical"></i>
-    </div>
-
-    <div class="content-emergency-text">
-
-        <span>
-            BE READY
-        </span>
-
-        <h2>
-            Prepare Your Emergency Kit
-        </h2>
-
-        <p>
-            Having essential supplies ready can make a big difference
-            during an emergency. Check what you should include in your
-            emergency kit.
-        </p>
-
-    </div>
-
-    <a href="emergency-checklist.html" class="emergency-button">
-        View Checklist
-        <i class="fa-solid fa-arrow-right"></i>
-    </a>
-
-</section>
-
-
-<!-- =========================
-     CCTC REMINDER
-========================= -->
-<section class="content-reminder">
-
-    <div class="reminder-icon">
-        <i class="fa-solid fa-shield-halved"></i>
-    </div>
-
-    <div>
-
-        <h2>
-            CCTC Disaster Ready
-        </h2>
-
-        <p>
-            Preparedness is everyone's responsibility. Learn the
-            right safety actions and help make the CCTC community
-            safer and more prepared.
-        </p>
-
-    </div>
-
-</section>
-
-
-<!-- =========================
-     FOOTER
-========================= -->
-<footer class="footer">
-
-    <div class="footer-content">
-
-        <div class="footer-logo">
-            <i class="fa-solid fa-shield-heart"></i>
             <span>CCTC Disaster Ready</span>
+        </a>
+
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="content.html" class="active" aria-current="page">Content</a>
+            <a href="about.html">About</a>
         </div>
 
+        <a
+            href="profile.html"
+            class="profile-button"
+            aria-label="User Profile"
+            title="Profile"
+        >
+            <i class="fa-solid fa-user"></i>
+        </a>
+
+    </nav>
+
+
+    <!-- PAGE INTRODUCTION -->
+    <header class="content-page-hero">
+
+        <span class="content-page-label">
+            CCTC DISASTER READY PORTAL
+        </span>
+
+        <h1>Preparedness Resources</h1>
+
         <p>
-            © 2026 CCTC Disaster Ready Portal.
-            Stay informed. Stay prepared. Stay safe.
+            Explore the tools and resources available to help you
+            prepare for emergencies, understand safety procedures,
+            and protect yourself and the CCTC community.
         </p>
 
-    </div>
-
-</footer>
+    </header>
 
 
-<script src="script.js"></script>
+    <!-- ALL QUICK ACCESS CONTENT -->
+    <main>
+
+        <section class="content-library">
+
+            <div class="content-library-header">
+                <h2>Explore All Content</h2>
+
+                <p>
+                    Choose a resource below to access its information,
+                    activities, and preparedness tools.
+                </p>
+            </div>
+
+
+            <div class="content-library-grid">
+
+                <!-- EMERGENCY CHECKLIST -->
+                <a
+                    href="emergency-checklist.html"
+                    class="content-library-card"
+                >
+                    <div class="content-library-icon">
+                        <i class="fa-solid fa-list-check"></i>
+                    </div>
+
+                    <h3>Emergency Checklist</h3>
+
+                    <p>
+                        Review important preparedness tasks and
+                        check the supplies and actions you need
+                        before an emergency occurs.
+                    </p>
+
+                    <span class="content-library-button">
+                        Open Checklist
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </span>
+                </a>
+
+
+                <!-- FAMILY EMERGENCY PLAN -->
+                <a
+                    href="family-emergency-plan.html"
+                    class="content-library-card"
+                >
+                    <div class="content-library-icon">
+                        <i class="fa-solid fa-people-roof"></i>
+                    </div>
+
+                    <h3>Family Emergency Plan</h3>
+
+                    <p>
+                        Organize your family's emergency contacts,
+                        meeting arrangements, and plans for
+                        communicating during an emergency.
+                    </p>
+
+                    <span class="content-library-button">
+                        Open Family Plan
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </span>
+                </a>
+
+
+                <!-- CAMPUS EVACUATION MAP -->
+                <a
+                    href="campus-evacuation-map.html"
+                    class="content-library-card"
+                >
+                    <div class="content-library-icon">
+                        <i class="fa-solid fa-map-location-dot"></i>
+                    </div>
+
+                    <h3>Campus Evacuation Map</h3>
+
+                    <p>
+                        Explore the campus map to identify
+                        evacuation routes, emergency exits,
+                        assembly areas, and hazard areas.
+                    </p>
+
+                    <span class="content-library-button">
+                        View Campus Map
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </span>
+                </a>
+
+
+                <!-- EMERGENCY CONTACTS -->
+                <a
+                    href="emergency-contacts.html"
+                    class="content-library-card"
+                >
+                    <div class="content-library-icon">
+                        <i class="fa-solid fa-phone-volume"></i>
+                    </div>
+
+                    <h3>Emergency Contacts</h3>
+
+                    <p>
+                        Find important emergency contact information
+                        to help you know whom to contact when
+                        assistance is needed.
+                    </p>
+
+                    <span class="content-library-button">
+                        View Contacts
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </span>
+                </a>
+
+
+                <!-- HAZARD REPORTING -->
+                <a
+                    href="hazard-reporting.html"
+                    class="content-library-card"
+                >
+                    <div class="content-library-icon">
+                        <i class="fa-solid fa-triangle-exclamation"></i>
+                    </div>
+
+                    <h3>Hazard Reporting</h3>
+
+                    <p>
+                        Access the campus hazard reporting page
+                        to identify safety concerns and provide
+                        information about potential hazards.
+                    </p>
+
+                    <span class="content-library-button">
+                        Report a Hazard
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </span>
+                </a>
+
+
+                <!-- FIRST AID TUTORIALS -->
+                <a
+                    href="first-aid-tutorials.html"
+                    class="content-library-card"
+                >
+                    <div class="content-library-icon">
+                        <i class="fa-solid fa-kit-medical"></i>
+                    </div>
+
+                    <h3>First Aid Tutorials</h3>
+
+                    <p>
+                        Access first aid learning resources to
+                        become more familiar with basic emergency
+                        response and safety procedures.
+                    </p>
+
+                    <span class="content-library-button">
+                        View Tutorials
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </span>
+                </a>
+
+
+                <!-- EMERGENCY GO BAG -->
+                <a
+                    href="emergency-go-bag.html"
+                    class="content-library-card"
+                >
+                    <div class="content-library-icon">
+                        <i class="fa-solid fa-suitcase-medical"></i>
+                    </div>
+
+                    <h3>Emergency Go Bag</h3>
+
+                    <p>
+                        Learn about essential supplies to prepare
+                        and organize in a bag that you can take
+                        with you during an evacuation.
+                    </p>
+
+                    <span class="content-library-button">
+                        Prepare Your Go Bag
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </span>
+                </a>
+
+
+                <!-- DISASTER GUIDES -->
+                <a
+                    href="disaster-guides.html"
+                    class="content-library-card"
+                >
+                    <div class="content-library-icon">
+                        <i class="fa-solid fa-book-open"></i>
+                    </div>
+
+                    <h3>Disaster Guides</h3>
+
+                    <p>
+                        Explore safety guides covering different
+                        disasters and learn how to prepare for
+                        emergency situations.
+                    </p>
+
+                    <span class="content-library-button">
+                        Explore Guides
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </span>
+                </a>
+
+            </div>
+
+        </section>
+
+
+        <!-- PREPAREDNESS REMINDER -->
+        <section class="content-page-reminder">
+
+            <div class="content-page-reminder-inner">
+
+                <div class="content-page-reminder-icon">
+                    <i class="fa-solid fa-shield-heart"></i>
+                </div>
+
+                <div>
+                    <h2>Be Prepared. Stay Safe.</h2>
+
+                    <p>
+                        Take time to explore these resources and
+                        become familiar with the tools available
+                        to support disaster preparedness at CCTC.
+                    </p>
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- FOOTER -->
+    <footer>
+
+        <h3>CCTC Disaster Ready Portal</h3>
+
+        <p>Prepared Today. Safe Tomorrow.</p>
+
+        <p>Consolatrix College of Toledo City</p>
+
+    </footer>
+
+
+    <script src="script.js"></script>
 
 </body>
 </html>
-
